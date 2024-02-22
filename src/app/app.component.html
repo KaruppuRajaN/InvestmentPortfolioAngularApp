@@ -1,6 +1,10 @@
 
-<button (click)="swapLogin(0)">Login</button>
-<button (click)="swapLogin(1)">SignUp</button>
+<div class="banner1">
+
+  <div class="signup">
+    <h1><div><button (click)="swapLogin(0)">Login</button>
+      <button (click)="swapLogin(1)">SignUp</button>
+  </div></h1>
 
 <div *ngIf="isLogin; else signUp">
   <app-login></app-login>
@@ -8,3 +12,4 @@
 <ng-template #signUp>
   <app-signup></app-signup>
   </ng-template>
+  </div></div>

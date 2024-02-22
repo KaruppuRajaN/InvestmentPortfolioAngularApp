@@ -8,13 +8,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { GoldComponent } from './gold/gold.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserinfoComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    GoldComponent
   ],
   imports: [
     BrowserModule,

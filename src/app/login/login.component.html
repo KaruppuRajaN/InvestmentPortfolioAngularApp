@@ -1,16 +1,15 @@
 
 
-<div class="banner1">
-<div class="signin">
 <form >
-<h1>Login</h1>
 <label for="username">Username</label>
-<input type="text" id="username" placeholder="Enter Your Username/Email">
+<input type="text" id="username" minlength="6" maxlength="12" placeholder="Enter Your Username/Email" required>
 <label for="password">Password</label>
-<input type="password" name="password" id="password" placeholder="Enter Password">
+<input type="password" name="password" id="password" minlength="6" maxlength="12" placeholder="Enter Password" required>
+
+<!-- <div *ngIf="username.touched && username.invalid"> -->
+
+</div>
 <input type="submit" value="Login">
 </form>
-</div>
-</div>
 
  
