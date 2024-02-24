@@ -1,11 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { LoginComponent } from './login/login/login.component';
 import { DisplayoptionsComponent } from './mutualfunds/displayoptions/displayoptions.component';
 import { BuymutualfundsComponent } from './mutualfunds/buymutualfunds/buymutualfunds.component';
 import { OwnmutualfundsComponent } from './mutualfunds/ownmutualfunds/ownmutualfunds.component';
@@ -18,6 +16,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { RoundPipe } from './custom.pipe';
 
+import { FixedDepositCalculatorComponent } from './fixed-deposit/fixed-deposit.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,11 @@ import { RoundPipe } from './custom.pipe';
     DisplayoptionsComponent,
     BuymutualfundsComponent,
     OwnmutualfundsComponent,
-    RoundPipe
+    FixedDepositCalculatorComponent,
+    RoundPipe,
+    UserinfoComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

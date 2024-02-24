@@ -8,6 +8,18 @@ import { InvestmentappService } from './service/investmentapp.service';
   "../../node_modules/primeng/resources/primeng.min.css"]
 })
 export class AppComponent {
+
+  isLogin:boolean = false;
+
+  swapLogin(swap:number){
+    if(swap===0){
+      this.isLogin = true;
+    }
+    else{
+      this.isLogin = false;
+    }
+  }
+
   title = 'InvestmentPortfolioAngularApp';
   constructor(private investmentappService:InvestmentappService){}
 

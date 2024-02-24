@@ -1,0 +1,41 @@
+<div>
+  <h2>Fixed Deposit Calculator</h2>
+  <form (ngSubmit)="calculate()">
+    <div>
+      <label for="depositAmount">Deposit Amount:</label>
+      <input type="number" [(ngModel)]="fixDep.depositAmount" name="depositAmount" required>
+    </div>
+    <div>
+      <label for="interestRate">Interest Rate (%):</label>
+      <input type="number" [(ngModel)]="fixDep.interestRate" name="interestRate" required>
+    </div>
+    <div>
+      <label for="tenureYears">Tenure (years):</label>
+      <input type="number" [(ngModel)]="fixDep.tenureYears" name="tenureYears" required>
+    </div>
+    <div>
+      <label for="interestPayout">Interest Payout:</label>
+      <select [(ngModel)]="fixDep.interestPayout" name="interestPayout" required>
+        <option value="Monthly">Monthly</option>
+        <option value="Quarterly">Quarterly</option>
+        <option value="Half-Yearly">Half-Yearly</option>
+        <option value="Annually">Annually</option>
+      </select>
+    </div>
+    <div>
+      <label for="fdCreationDate">FD Creation Date:</label>
+      <input type="date" [(ngModel)]="currentDate" name="fdCreationDate"
+      (change)="onDateChange($event)" disabled >
+
+    </div>
+    <button type="submit">Calculate</button>
+  </form>
+
+  <div *ngIf="fixDep.maturityAmount">
+    <h3>Results</h3>
+    <p>Maturity Amount: {{ fixDep.maturityAmount | currency: 'INR' }}</p>
+    <p>FD Maturity Date: {{ fixDep.fdMaturityDate | date }}</p>
+    <p>Total Interest: {{ fixDep.totalInterest | currency: 'INR' }}</p>
+    <p>Monthly Interest: {{ fixDep.monthlyInterest | currency: 'INR' }}</p>
+  </div>
+</div>
