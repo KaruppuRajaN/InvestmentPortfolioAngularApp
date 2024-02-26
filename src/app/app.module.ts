@@ -15,17 +15,22 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { RoundPipe } from './custom.pipe';
-
 import { FixedDepositCalculatorComponent } from './fixed-deposit/fixed-deposit.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { SovereignGoldBondComponent } from './sovereign-gold-bond/sovereign-gold-bond.component';
 import { FloatingRateBondComponent } from './floating-rate-bond/floating-rate-bond.component';
+import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FixedDepositCalculatorComponent,
+    UserinfoComponent,
+    SignupComponent,
+    LoginComponent,
+    RecurringDepositComponent,
     LoginComponent,
     DisplayoptionsComponent,
     BuymutualfundsComponent,

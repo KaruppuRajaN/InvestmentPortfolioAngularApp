@@ -1,0 +1,32 @@
+<!-- recurring-deposit-calculator.component.html -->
+<div>
+    <h2>Recurring Deposit Calculator</h2>
+    <form (ngSubmit)="calculate()">
+      <div>
+        <label>Start Date:</label>
+        <input type="text" [(ngModel)]="rd.startDate" name="startDate" disabled>
+      </div>
+      <div>
+        <label>Monthly Deposit:</label>
+        <input type="number" [(ngModel)]="rd.monthlyDeposit" name="monthlyDeposit" required>
+      </div>
+      <div>
+        <label>Tenure (Years):</label>
+        <input type="number" [(ngModel)]="rd.tenureYears" name="tenureYears" required>
+      </div>
+      <div>
+        <label>Interest Rate (%):</label>
+        <input type="number" [(ngModel)]="rd.interestRate" name="interestRate" required>
+      </div>
+      <button type="submit">Calculate</button>
+    </form>
+  
+    <div *ngIf="rd.totalAmountInvested !== undefined">
+      <h3>Results</h3>
+      <p>Total Amount Invested: {{ rd.totalAmountInvested | currency:'INR' }}</p>
+      <p>Total Interest Earned: {{ rd.totalInterestEarned | currency:'INR' }}</p>
+      <p>Maturity Amount: {{ rd.maturityAmount | currency:'INR' }}</p>
+      <p>Maturity Date: {{ rd.maturityDate | date }}</p>
+    </div>
+  </div>
+  
