@@ -1,0 +1,62 @@
+<div style="margin-top:20px;">
+    <label>Risk Category</label>
+    <select [(ngModel)]="riskCategory" (change)="changeOptions(1)">
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+
+    <label>Caps Category</label>
+    <select [(ngModel)]="capsCategory" (change)="changeOptions(2)">
+      <option value="Large">Large</option>
+      <option value="Mid">Mid</option>
+      <option value="Small">Small</option>
+    </select>
+    <input type="number" placeholder="Enter Amount you can Spent" [(ngModel)]="paymentAmount">
+    <button type="submit" (click)="onSubmit()">Check Mutual Funds</button>
+ 
+    <div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of mutualfunds; let i =index;">
+  <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
+    <mat-card-header >
+              <mat-card-title><span><b>Mutual Fund Price: {{mutualStockValue[i]|round:2}}</b></span><span style="color: #32CD32; position:absolute; right: 10px;"><b>Expected Return: {{expectedReturnValue[i]|round:2}}</b></span></mat-card-title>
+      
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Company Symbol</th>
+            <th>Company Name</th>
+            <th>Current Stock Price<br>[{{actionDate}}]</th>
+            <th>Percentage Alloted</th>
+            <th>Alloted Percentage Price</th>
+            <th>Expected Return</th>
+          </tr>
+        </thead>
+        <tbody  style="text-align: center;" *ngFor="let mf of mutualfund">
+          <tr>
+            <td>{{mf.companySymbol}}</td>
+            <td>{{mf.companyName}}</td>
+            <td>{{mf.lastActionAmount|round:2}}</td>
+            <td>{{mf.allocationPercentageFromMoney|round:2}}</td>
+            <td>{{mf.calculatedAnnualAmount|round:2}}</td>
+            <td>{{mf.calculatedAnnualReturnAmount|round:2}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+        <br><br><br>
+      </mat-card-content>
+    <div style="position: relative;">
+      <button (click)="purchaseMF(mutualfund)" mat-button style="background-color: #32CD32;width: 100px;position:absolute; right: 50px;bottom:0; margin-bottom: 10px;">Buy</button>
+    </div>
+  </mat-card>
+</div>
+  
+  <br><br>
+<h1 style="color: red;text-align: center;" *ngIf="buttonClick && count<=0">Kindly Check Search Criteria!!!<br>Please Try With Alternate Search Criteria!!!</h1>
+
+</div>
