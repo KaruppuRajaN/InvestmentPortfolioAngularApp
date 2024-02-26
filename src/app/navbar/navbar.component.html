@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>AIPMS</span>
+  <span class="spacer"></span>
+  <ng-container *ngFor="let link of navLinks">
+    <button mat-button *ngIf="!link.dropdownItems; else dropdownMenu" [routerLink]="link.path">{{ link.label }}</button>
+    <ng-template #dropdownMenu>
+      <button mat-button [matMenuTriggerFor]="menuRef">{{ link.label }}</button>
+      <mat-menu #menuRef>
+        <button mat-menu-item *ngFor="let item of link.dropdownItems" [routerLink]="item.path">{{ item.label }}</button>
+      </mat-menu>
+    </ng-template>
+  </ng-container>
+</mat-toolbar>
