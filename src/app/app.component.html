@@ -1,20 +1,57 @@
-<!-- <app-login></app-login>
-<div class="container">
-  <div class="login-container">
-    <div class="login-box">
-      <h2>Login</h2>
-      <form (submit)="loginWithCredentials(username.value,password.value)">
-        <div class="p-field">
-          <label for="username">Username</label>
-          <input #username id="username" type="text" pInputText placeholder="Enter UserName">
-        </div>
-        <div class="p-field">
-          <label for="password">Password</label>
-          <input #password id="password" type="password" pInputText placeholder="Enter Password">
-        </div>
-        <button type="submit" pButton>Login</button>
-      </form>
-    </div>
-  </div> -->
 
-  <app-displayoptions></app-displayoptions>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+  <div class="navbar-header">
+  <a class="navbar-brand" href="#" style="padding-left: 50px">AIPMS</a>
+  </div>
+  <ul class="nav navbar-nav" style="padding-left: 100px">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Mutual Funds</a></li>
+  <li><a href="#">Bonds</a></li>
+  <li><a href="#">Gold Investment</a></li>
+  <li><a href="#">Deposit</a></li>
+  <li><a href="#">My Investments</a></li>
+  </ul>
+  <form class="navbar-form navbar-left">
+  <div class="form-group">
+  <input type="text" class="form-control" placeholder="Search">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  <div>
+  </div>
+  </div>
+  </nav>
+<div class="banner1">
+
+  <div class="signup">
+    <h1><div><button (click)="swapLogin(0)">Login</button>
+      <button (click)="swapLogin(1)">SignUp</button>
+  </div></h1>
+
+<div *ngIf="isLogin; else signUp">
+  <app-login></app-login>
+</div>
+<ng-template #signUp>
+  <app-signup></app-signup>
+  </ng-template>
+  </div></div>
+
+
+<div class="banner1">
+
+  <div class="signup">
+    <h1><div><button (click)="swapLogin(0)">Login</button>
+      <button (click)="swapLogin(1)">SignUp</button>
+  </div></h1>
+
+<div *ngIf="isLogin; else signUp">
+  <app-login></app-login>
+</div>
+<ng-template #signUp>
+  <app-signup></app-signup>
+  </ng-template>
+  </div></div>
+  <div></div>
+<app-gold></app-gold>
+<app-userinfo></app-userinfo>
