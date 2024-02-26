@@ -18,8 +18,8 @@ export class InvestmentappService {
 
   constructor(private http:HttpClient) { }
 
-  investorLogin(credentials:{username:string, password:string}){
-    return this.http.post(this.apiUrl+"/login",credentials);
+  investorLogin(user:UserProfile):Observable<any>{
+    return this.http.post<any>(this.apiUrl+"user/login",user);
   }
 
   getAllMutualFunds(FilterMutualFundOptions:{capsCategory:string,riskCategory:string,paymentAmount:number}):Observable<MutualFunds[][]>{

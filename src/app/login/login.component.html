@@ -1,14 +1,12 @@
 
 
-<form >
-<label for="username">Username</label>
-<input type="text" id="username" minlength="6" maxlength="12" placeholder="Enter Your Username/Email" required>
+<form (submit)="loginWithCredentials()">
+<label for="emailId">MailId</label>
+<input [(ngModel)]="user.emailId" type="text" id="mailId" name="mailId" placeholder="Enter Your Email" required>
 <label for="password">Password</label>
-<input type="password" name="password" id="password" minlength="6" maxlength="12" placeholder="Enter Password" required>
+<input [(ngModel)]="user.password" type="password" name="password" id="password" placeholder="Enter Password" required>
 
-<!-- <div *ngIf="username.touched && username.invalid"> -->
-
-<input type="submit" value="Login">
+<input type="submit" value="Login" >
 </form>
 
  

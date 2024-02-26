@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
  
   navLinks = [
+    { label: 'Login/SignUp', path: '/login-signup' },
     { label: 'Home', path: '/home' },
     { label: 'Deposits', dropdownItems: [
         { label: 'Fixed Deposit', path: '/deposits/fd' },

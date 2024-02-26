@@ -8,19 +8,6 @@ import { InvestmentappService } from '../service/investmentapp.service';
 })
 export class SignupComponent {
 
-  title = 'InvestmentPortfolioAngularApp';
-  constructor(private investmentappService:InvestmentappService){}
 
-  loginWithCredentials(username:string,password:string){
-    console.log("bye");
-    this.investmentappService.investorLogin({username,password}).subscribe(
-      (response)=>{
-        console.log("SignUp Successful!!!")
-      },
-      (error)=>{
-        console.error('SignUp Failed!!!');
-      }
-    )
-  }
 
 }

@@ -10,9 +10,11 @@ import { FixedDepositCalculatorComponent } from './fixed-deposit/fixed-deposit.c
 import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit.component';
 import { SovereignGoldBondComponent } from './sovereign-gold-bond/sovereign-gold-bond.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { LoginSignupComponent } from './login-signup/login-signup.component';
 
 const routes: Routes = [
   { path: 'home', component: UserinfoComponent },
+  { path: 'login-signup', component: LoginSignupComponent },
   { path: 'deposits/fd', component: FixedDepositCalculatorComponent },
   { path: 'deposits/rd', component: RecurringDepositComponent },
   { path: 'gold', component: GoldComponent }, 
@@ -20,8 +22,8 @@ const routes: Routes = [
   { path: 'bonds/frb', component: FloatingRateBondComponent },
   { path: 'mfunds', component: DisplayoptionsComponent },
   { path: 'myportfolio', component: PortfolioComponent },  
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home' }
+  { path: '', redirectTo: '/login-signup', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login-signup' }
 ];
 
 
