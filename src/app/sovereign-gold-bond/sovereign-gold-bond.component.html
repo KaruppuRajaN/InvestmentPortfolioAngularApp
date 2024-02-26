@@ -1,0 +1,30 @@
+<div>
+  <h2>SovereignGoldBonds Calculator</h2>
+  <form (ngSubmit)="calculate()">
+    <div>
+      <label for="iamount">Investment Amount:</label>
+      <input type="number" [(ngModel)]="sgb.iamount" name="Investment" required>
+    </div>
+    <div>
+      <label for="gprice"> Current Gold Price :</label>
+      <input type="number" [(ngModel)]="sgb.gprice" name="Gold price" >
+    </div>
+    <div>
+      <label for="interestRate"> Interest Rate:</label>
+      <input type="number" [(ngModel)]="sgb.interestRate" name="Interest Rate">
+    </div>
+    <div>
+        <label for="n">Tenure year: </label>
+        <input type="number" [(ngModel)]="sgb.n" name="Tenure year">
+      </div>
+    <button type="submit">Calculate</button>
+  </form>
+
+  <div *ngIf="sgb.maturityValue">
+    <h3>Results</h3>
+   
+    <p>Total Interest : {{ sgb.totalInterest | currency: 'INR' }}</p>
+    <p>Maturity Value : {{ sgb.maturityValue  | currency: 'INR' }}</p>
+     
+</div>
+

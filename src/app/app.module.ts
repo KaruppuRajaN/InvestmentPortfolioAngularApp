@@ -20,6 +20,8 @@ import { FixedDepositCalculatorComponent } from './fixed-deposit/fixed-deposit.c
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { SovereignGoldBondComponent } from './sovereign-gold-bond/sovereign-gold-bond.component';
+import { FloatingRateBondComponent } from './floating-rate-bond/floating-rate-bond.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LoginComponent } from './login/login.component';
     RoundPipe,
     UserinfoComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    SovereignGoldBondComponent,
+    FloatingRateBondComponent
   ],
   imports: [
     BrowserModule,
