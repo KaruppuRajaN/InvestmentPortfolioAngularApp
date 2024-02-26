@@ -20,11 +20,6 @@ export class NavbarComponent {
       { label: 'Floating Rate Bond', path: '/bonds/frb' }
       ]
     },
-    { label: 'Mutual Funds', dropdownItems: [
-      { label: 'Buy Mutual funds', path: '/mfunds/buy' },
-      { label: 'Display Mutual Funds', path: '/mfunds/show' },
-      { label: 'Own Mutual Funds', path: '/mfunds/own' }
-      ]
-    },
+    { label: 'Mutual Funds', path: '/mfunds' }
   ];
 }

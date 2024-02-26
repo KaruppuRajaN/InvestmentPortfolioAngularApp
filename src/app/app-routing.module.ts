@@ -17,9 +17,8 @@ const routes: Routes = [
   { path: 'gold', component: GoldComponent }, 
   { path: 'bonds/sgb', component: SovereignGoldBondComponent },
   { path: 'bonds/frb', component: FloatingRateBondComponent },
-  { path: 'mfunds/buy', component: BuymutualfundsComponent },
-  { path: 'mfunds/show', component: DisplayoptionsComponent },
-  { path: 'mfunds/own', component: OwnmutualfundsComponent },
+  { path: 'mfunds', component: DisplayoptionsComponent },
+  { path: 'myportfolio', component: DisplayoptionsComponent },  
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
