@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class InvestmentappService {
 
-  private apiUrl='http://localhost:9090/investmentapp'
+  private apiUrl='http://localhost:8090/user'
   constructor(private http:HttpClient) { }
 
   investorLogin(credentials:{username:string, password:string}){
