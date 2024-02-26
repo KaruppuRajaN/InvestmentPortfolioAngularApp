@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MutualFunds } from '../model/mutualfunds';
 import { PurchasedMutualFunds } from '../model/purchasedmutualfunds';
+import { UserProfile } from '../model/UserProfile';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,14 @@ export class InvestmentappService {
     return this.http.post<MutualFunds[][]>(this.apiUrl+"stocks/mutualfunds",FilterMutualFundOptions);
   }
 
+  getAllOwnMutualFunds(userProfile:UserProfile):Observable<PurchasedMutualFunds[][]>{
+    return this.http.post<PurchasedMutualFunds[][]>(this.apiUrl+"stocks/getrespectivemutualfunds",userProfile);
+  }
   purchaseMutualFunds(purchasedMF:PurchasedMutualFunds[]):Observable<string>{
     return this.http.post<string>(this.apiUrl+"stocks/purchasemutualfunds",purchasedMF);
+  }
+  withdrawMutualFunds(purchasedMF:PurchasedMutualFunds[]):Observable<string>{
+    return this.http.post<string>(this.apiUrl+"stocks/withdrawmutualfunds",purchasedMF);
   }
   
 }
