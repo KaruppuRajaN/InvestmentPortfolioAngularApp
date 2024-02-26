@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { InvestmentappService } from '../../service/investmentapp.service';
 import { MutualFunds } from '../../model/mutualfunds';
 import {PurchasedMutualFunds} from '../../model/purchasedmutualfunds';
@@ -9,6 +9,7 @@ import {PurchasedMutualFunds} from '../../model/purchasedmutualfunds';
   styleUrl: './buymutualfunds.component.css'
 })
 export class BuymutualfundsComponent {
+  @Output() reloadDisplayPage=new EventEmitter<boolean>();
   capsCategory:string='';
   timestampvalue:string;
   pmfcount=0;
@@ -80,6 +81,8 @@ export class BuymutualfundsComponent {
   }
 
   purchaseMF(mf:MutualFunds[]){
+    if(confirm("Please confirm to buy our Mutual Fund Pack!!!")==false)
+    return;
     this.pmfdata=mf;
     this.pmfcount=0;
     this.timestampvalue=new Date(Date.now()).toString();
@@ -97,10 +100,12 @@ export class BuymutualfundsComponent {
     });
     this.service.purchaseMutualFunds(this.purchasedMF).subscribe(
       (response)=>{
-        alert("Purchasing is "+response.toString()+" !!!");
+        alert("Purchasing is Processing... Kindly Check in your Bucket List!!!" );
+        this.reloadDisplayPage.emit(true);
       },
       (error)=>{
-        alert("Purchasing is "+error.toString()+" !!!");
+        alert("Purchasing is Processing... Kindly Check in your Bucket List!!!" );
+        this.reloadDisplayPage.emit(true);
       }
     );
   }
