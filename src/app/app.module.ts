@@ -25,6 +25,7 @@ import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     SovereignGoldBondComponent,
     FloatingRateBondComponent,
-    NavbarComponent
+    NavbarComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
