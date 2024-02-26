@@ -1,0 +1,64 @@
+/* recurring-deposit-calculator.component.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #d1d8e0;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 24px;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #004990;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #00316e;
+  }
+  
+  .results {
+    margin-top: 40px;
+  }
+  
+  .results h3 {
+    color: #4a4a4a;
+    font-size: 20px;
+  }
+  
+  .results p {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  /* Styling for form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
