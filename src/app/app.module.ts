@@ -25,7 +25,7 @@ import { GoldComponent } from './gold/gold.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
