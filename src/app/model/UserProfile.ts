@@ -14,5 +14,4 @@ export class UserProfile{
 	panNumber:string;
 	walletBalance:number;
 	secQuestion:string;
-	secAnswer:string;
 }
