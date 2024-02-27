@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Portfolio } from '../model/Portfolio';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { Router } from '@angular/router';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -20,7 +21,8 @@ export class PortfolioComponent {
   }
 
   ngOnInit():void{
-    this.service.getAllInvestments(2).subscribe(
+    this.portfolio.user = UserinfoComponent.user;
+    this.service.getAllInvestments(this.portfolio.user.userId).subscribe(
       (response) => { 
         console.log(response);
         this.portfolio=response;

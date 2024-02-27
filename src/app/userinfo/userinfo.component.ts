@@ -10,13 +10,17 @@ import { InvestmentappService } from '../service/investmentapp.service';
 })
 export class UserinfoComponent implements OnInit{
 
-  user : UserProfile = new UserProfile();
-  constructor(private router: Router) {
-    router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        console.log('Navigation is starting');
-      }
-    });
+
+  public static user : UserProfile = new UserProfile();
+  userdata: UserProfile;
+
+  constructor() {
+
+  }
+
+  static setUser(userData: UserProfile) {
+    console.log(userData);
+    UserinfoComponent.user = userData;
   }
 
   isLogin:boolean = false;
@@ -32,14 +36,7 @@ export class UserinfoComponent implements OnInit{
  
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation && navigation.extras.state) {
-      const user = navigation.extras.state['user'];
-      console.log(user); // Check if user object is logged correctly
-    } else {
-      console.log('Route state is not available');
-    }
-
+    this.userdata = UserinfoComponent.user;
   }
 
 }

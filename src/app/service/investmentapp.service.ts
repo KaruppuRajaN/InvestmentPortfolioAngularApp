@@ -8,6 +8,7 @@ import { FixedDeposit } from '../model/FixedDeposit';
 import { RecurringDeposit } from '../model/RecurringDeposit';
 import { Portal } from '@angular/cdk/portal';
 import { Portfolio } from '../model/Portfolio';
+import { GoldInvestment } from '../model/GoldInvestment';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,9 @@ export class InvestmentappService {
   }
   saveRecDep(recDep:RecurringDeposit):Observable<boolean> {
     return this.http.post<boolean>(this.apiUrl+"deposit/submit/rd",recDep);
+  }
+  saveGoldInv(gold: GoldInvestment):Observable<boolean> {
+    return this.http.post<boolean>(this.apiUrl+"gold/buy",gold);
   }
   getAllInvestments(userId:number):Observable<Portfolio>{
     const url = `${this.apiUrl}portfolio/`+userId;

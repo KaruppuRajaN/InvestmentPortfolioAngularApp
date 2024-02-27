@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-navbar',
@@ -24,4 +25,5 @@ export class NavbarComponent {
     { label: 'Mutual Funds', path: '/mfunds' },
     { label: 'My Portfolio', path: '/myportfolio' }
   ];
+
 }

@@ -1,11 +1,14 @@
+import { UserProfile } from "./UserProfile";
+
 export class FixedDeposit{
-    depositAmount!: number ;
-  interestRate!: number;
-  tenureYears!: number ;
-  interestPayout: string = '';
+  depositAmount: number = 0;
+  rate: number = 0;
+  tenureYears: number = 0;
+  interestPayoutType: string = '';
   maturityAmount: number = 0;
-  fdCreationDate: Date =  new Date();
-  fdMaturityDate: Date = new Date();
-  totalInterest: number = 0;
+  StartDate: Date =  new Date();
+  EndDate: Date = new Date();
+  interestPayoutAmount: number = 0;
   monthlyInterest: number = 0;
+  fdHolder: UserProfile | undefined;
 }
