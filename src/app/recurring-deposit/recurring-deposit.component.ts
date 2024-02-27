@@ -49,8 +49,8 @@ export class RecurringDepositComponent {
     this.service.saveRecDep(recDep).subscribe(
       (response) => { 
         if(response){
-          window.alert("FD succesfully submitted");
-          this.router.navigate(['/home']);
+          window.alert("RD succesfully submitted");
+          this.router.navigate(['/myportfolio']);
         }
        }
     );

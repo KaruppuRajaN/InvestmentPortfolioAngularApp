@@ -13,8 +13,8 @@ import { UserinfoComponent } from '../userinfo/userinfo.component';
 export class LoginComponent {
   
   user : UserProfile = new UserProfile();
+  userInfo: UserinfoComponent = new UserinfoComponent();
   
-
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   loginWithCredentials(){
@@ -22,8 +22,8 @@ export class LoginComponent {
       (response)=>{
         this.user = response;
         console.log("Login Successful!!!" + this.user.emailId);
-        console.log({ state: { user : this.user } });
-        this.router.navigate(['/home'], { state: { user : this.user } });
+        UserinfoComponent.setUser(this.user);
+        this.router.navigate(['/myportfolio']);
       },
       (error)=>{
         console.error('Login Failed!!!');
