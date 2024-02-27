@@ -1,12 +1,15 @@
+import { UserProfile } from "./UserProfile";
+
 // recurring-deposit.model.ts
 export class RecurringDeposit {
-    monthlyDeposit!: number;
+    regularMonthlyDepositAmount!: number;
     tenureYears!: number;
-    interestRate!: number;
+    rate!: number;
     startDate!: Date;
     totalAmountInvested!: number;
-    totalInterestEarned!: number;
-    maturityAmount!: number;
-    maturityDate!: Date;
+    interestAmount: number | undefined;
+    maturityAmount: number | undefined;
+    endDate!: Date;
+    rdHolder: UserProfile | undefined;
   }
   
