@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { GoldInvestment } from '../model/GoldInvestment';
+import { InvestmentappService } from '../service/investmentapp.service';
+import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-gold',
@@ -20,7 +23,7 @@ export class GoldComponent {
     this.gold.amount = this.gold.principle*(Math.pow(1+this.gold.monthlyrate, this.gold.months)-1)/(this.gold.monthlyrate)*(1+this.gold.monthlyrate);
 
     this.gold.profit = this.gold.amount- (this.gold.principle*12*this.gold.years);
-    this.gold.goldpurchased=(this.gold.amount -this.gold.profit)/6000;
+    this.gold.goldpurchased=(this.gold.amount -this.gold.profit)/6344;
     console.log(this.gold);
 }
 }
