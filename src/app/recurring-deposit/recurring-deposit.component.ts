@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RecurringDeposit } from '../model/RecurringDeposit';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { Router } from '@angular/router';
@@ -8,13 +8,22 @@ import { Router } from '@angular/router';
   templateUrl: './recurring-deposit.component.html',
   styleUrl: './recurring-deposit.component.css'
 })
-export class RecurringDepositComponent {
+export class RecurringDepositComponent implements OnInit {
+
+  startDate: string | undefined;
 
    rd: RecurringDeposit = new RecurringDeposit();
 
   constructor(private service:InvestmentappService, private router: Router) {
-    this.rd.startDate = new Date();
+    this.startDate = new Date().toISOString().substr(0, 10);;
   }
+
+  // This function is called when the date input value changes
+  onDateChange(event: any) {
+    this.rd.startDate = new Date(event.target.value);
+  }
+
+  ngOnInit() {}
 
   calculate() {
     const monthlyDeposit = this.rd.monthlyDeposit;
@@ -49,8 +58,8 @@ export class RecurringDepositComponent {
     this.service.saveRecDep(recDep).subscribe(
       (response) => { 
         if(response){
-          window.alert("FD succesfully submitted");
-          this.router.navigate(['/home']);
+          window.alert("RD succesfully submitted");
+          this.router.navigate(['/myportfolio']);
         }
        }
     );

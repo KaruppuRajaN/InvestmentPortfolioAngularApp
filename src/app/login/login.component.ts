@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { UserProfile } from '../model/UserProfile';
 import { Router } from '@angular/router';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   
   user : UserProfile = new UserProfile();
-
-
+  userInfo: UserinfoComponent = new UserinfoComponent();
+  
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   loginWithCredentials(){
@@ -21,8 +22,8 @@ export class LoginComponent {
       (response)=>{
         this.user = response;
         console.log("Login Successful!!!" + this.user.emailId);
-        console.log({ state: { user : this.user } });
-        this.router.navigate(['/home'], { state: { user : this.user } });
+        UserinfoComponent.setUser(this.user);
+        this.router.navigate(['/myportfolio']);
       },
       (error)=>{
         console.error('Login Failed!!!');

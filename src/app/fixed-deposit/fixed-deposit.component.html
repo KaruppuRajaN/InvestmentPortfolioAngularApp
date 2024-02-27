@@ -7,7 +7,7 @@
     </div>
     <div>
       <label for="interestRate">Interest Rate (%):</label>
-      <input type="number" [(ngModel)]="fixDep.interestRate" name="interestRate" required>
+      <input type="number" [(ngModel)]="fixDep.rate" name="interestRate" required>
     </div>
     <div>
       <label for="tenureYears">Tenure (years):</label>
@@ -15,7 +15,7 @@
     </div>
     <div>
       <label for="interestPayout">Interest Payout:</label>
-      <select [(ngModel)]="fixDep.interestPayout" name="interestPayout" required>
+      <select [(ngModel)]="fixDep.interestPayoutType" name="interestPayout" required>
         <option value="Monthly">Monthly</option>
         <option value="Quarterly">Quarterly</option>
         <option value="Half-Yearly">Half-Yearly</option>
@@ -34,8 +34,8 @@
   <div *ngIf="fixDep.maturityAmount">
     <h3>Results</h3>
     <p>Maturity Amount: {{ fixDep.maturityAmount | currency: 'INR' }}</p>
-    <p>FD Maturity Date: {{ fixDep.fdMaturityDate | date }}</p>
-    <p>Total Interest: {{ fixDep.totalInterest | currency: 'INR' }}</p>
+    <p>FD Maturity Date: {{ fixDep.StartDate | date }}</p>
+    <p>Total Interest: {{ fixDep.interestPayoutAmount | currency: 'INR' }}</p>
     <p>Monthly Interest: {{ fixDep.monthlyInterest | currency: 'INR' }}</p>
   </div>
 

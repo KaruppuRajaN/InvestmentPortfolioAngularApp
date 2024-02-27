@@ -21,6 +21,14 @@ export class OwnmutualfundsComponent {
   constructor(private service:InvestmentappService){}
 
   ngOnInit():void{
+    this.mutualfunds=[];
+  this.userProfile=new UserProfile();
+  
+  this.emptyResult=false;
+  this.boughtAmount=[];
+  this.currentReturn=[];
+  this.count=0;
+
     this.userProfile.userId=1;
     this.service.getAllOwnMutualFunds(this.userProfile).subscribe((response)=>
     {
@@ -50,10 +58,11 @@ export class OwnmutualfundsComponent {
     this.service.withdrawMutualFunds(mutualFund).subscribe(
       (response)=>{
         alert("Withdrawn is Pending!!!\nAmount will be credited in 1 day if Mutual fund withdrawn process Successfully");
-
+        this.ngOnInit();
       },
       (error)=>{
         alert("Withdrawn is Pending!!!\nAmount will be credited in 1 day if Mutual fund withdrawn process Successfully");
+        this.ngOnInit();
       }
     );
   }

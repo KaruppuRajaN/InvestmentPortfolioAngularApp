@@ -3,10 +3,6 @@
     <h2>Recurring Deposit Calculator</h2>
     <form (ngSubmit)="calculate()">
       <div>
-        <label>Start Date:</label>
-        <input type="text" [(ngModel)]="rd.startDate" name="startDate" disabled>
-      </div>
-      <div>
         <label>Monthly Deposit:</label>
         <input type="number" [(ngModel)]="rd.monthlyDeposit" name="monthlyDeposit" required>
       </div>
@@ -18,6 +14,15 @@
         <label>Interest Rate (%):</label>
         <input type="number" [(ngModel)]="rd.interestRate" name="interestRate" required>
       </div>
+      <!-- <button type="submit">Calculate</button> -->
+
+      <div>
+        <label for="rdCreationDate">RD Creation Date:</label>
+        <input type="date" [(ngModel)]="startDate" name="rdCreationDate"
+        (change)="onDateChange($event)" disabled >
+  
+      </div>
+
       <button type="submit">Calculate</button>
     </form>
   
