@@ -10,7 +10,8 @@ import { InvestmentappService } from '../service/investmentapp.service';
 })
 export class UserinfoComponent implements OnInit{
 
-  user : UserProfile = new UserProfile();
+  public static user : UserProfile = new UserProfile();
+UserinfoComponent: any;
   constructor(private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {

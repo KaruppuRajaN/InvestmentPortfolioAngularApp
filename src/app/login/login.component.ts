@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { UserProfile } from '../model/UserProfile';
 import { Router } from '@angular/router';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   
   user : UserProfile = new UserProfile();
-
+  
 
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
