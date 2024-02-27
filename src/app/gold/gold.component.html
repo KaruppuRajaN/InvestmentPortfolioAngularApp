@@ -8,7 +8,21 @@
             <label>Principle Amount</label>
             <input type="number" [(ngModel)]="gold.principle" name="principle">
         </div>
-       
+        <div class="form-group col-md-6">
+            <label>Today Gold Rate</label>
+            <input type="number" [(ngModel)]="gold.todaygoldrate" name="todaygoldrate" disabled>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Interest</label>
+            <input type="number" [(ngModel)]="gold.interest" name="interest" disabled>
+        </div>
+        
+        <!-- <div>
+            <label for="golCreationDate">Gold Creation Date:</label>
+            <input type="date" [(ngModel)]="goldCreationDate" name="goldCreationDate"
+            (change)="onDateChange($event)" disabled >
+      
+          </div> -->
 
        <div class="form-group col-md-6">
         <label for="duration"> Select Duration </label>
@@ -38,7 +52,7 @@
                 <p>Total Gold Purchased: {{ gold.goldpurchased }}</p>
                 </div>
         </div>
-        <button type="submit" >Invest Now</button> 
+        <button type="submit" (click)="SaveGold()">Invest Now</button> 
 
     </div> 
 
