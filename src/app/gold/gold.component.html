@@ -1,19 +1,19 @@
-<p>gold works!</p>
+<br>
+<br>
 
-<div>
-   
+<div> 
+    
     <form>
         <div class="form-group col-md-6">
             <label>Principle Amount</label>
-            <input type="number" id="principle" [(ngModel)]="gold.principle" name="principle">
+            <input type="number" [(ngModel)]="gold.principle" name="principle">
         </div>
        
 
        <div class="form-group col-md-6">
-        <label> Select Duration </label>
+        <label for="duration"> Select Duration </label>
        
-        <select id="timeline" name="timeline" [(ngModel)]="gold.years">
-        <option value="">- Select Duration -</option>
+        <select [(ngModel)]="gold.years" name="years" required>
      
         <option value="1">1 Year </option>
         <option value="2">2 Years</option>
@@ -31,15 +31,14 @@
     </form>
         <div>
             <div *ngIf="gold.principle!== undefined">
-                <h3>Results</h3>
-                <p>Total Amount Invested: {{ gold.principle }}</p>
+                <h3><b>Returns - </b></h3>
+                <p>Total Amount Invested: {{ gold.principle * 12 * gold.years }}</p>
                 <p>Total Interest Earned: {{ gold.amount }}</p>
-                <p>Profit: {{ gold.profit  }}</p>
+                <p>Profit: {{ gold.profit }}</p>
                 <p>Total Gold Purchased: {{ gold.goldpurchased }}</p>
                 </div>
         </div>
-       
+        <button type="submit" >Invest Now</button> 
 
-    </div>
-
+    </div> 
 
