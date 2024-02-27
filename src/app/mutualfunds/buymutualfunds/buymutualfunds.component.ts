@@ -3,6 +3,7 @@ import { InvestmentappService } from '../../service/investmentapp.service';
 import { MutualFunds } from '../../model/mutualfunds';
 import {PurchasedMutualFunds} from '../../model/purchasedmutualfunds';
 
+
 @Component({
   selector: 'app-buymutualfunds',
   templateUrl: './buymutualfunds.component.html',
@@ -12,6 +13,7 @@ export class BuymutualfundsComponent {
   @Output() reloadDisplayPage=new EventEmitter<boolean>();
   capsCategory:string='';
   timestampvalue:string;
+  
   pmfcount=0;
   buttonClick:boolean=false;
   actionDate:string='';
@@ -20,6 +22,13 @@ export class BuymutualfundsComponent {
   mutualfunds:MutualFunds[][]=[];
   mutualStockValue:number[]=[];
   expectedReturnValue:number[]=[];
+
+  currentPage:number=1;
+  pageMutualFunds:MutualFunds[][]=[];
+  pageMutualStockValue:number[]=[];
+  pageExpectedReturnValue:number[]=[];
+
+
   count:number=0;
   pmfdata:MutualFunds[]=[];
   purchasedMF:PurchasedMutualFunds[]=[];
@@ -34,6 +43,10 @@ export class BuymutualfundsComponent {
         this.expectedReturnValue=[];
         this.mutualStockValue=[];
         this.mutualfunds=response;
+        this.pageMutualFunds=[];
+        this.currentPage=1;
+        this.pageMutualStockValue=[];
+        this.pageExpectedReturnValue=[];
         
         this.mutualfunds.forEach(mf=>{
           mf.forEach(mutualF=>{
@@ -50,8 +63,16 @@ export class BuymutualfundsComponent {
           });
           this.count+=1;
         });
+        if(this.mutualfunds[0]===undefined){
+          this.count=0;
+          this.buttonClick=true;
+        }
+        
+        this.currentPage=1;
+        this.pageMutualFunds=this.getRecordsPage();
       },
       (error)=>{
+          this.count=0;
       });
   }
   onSubmit(){
@@ -123,10 +144,20 @@ export class BuymutualfundsComponent {
     );
   }
   onPaymentChange(){
-    console.log("Ji");
     if(this.paymentAmount<0){
       this.paymentAmount=null;
     }
+  }
+
+  get totalPages():number{
+    return Math.ceil(this.mutualfunds.length/5);
+  }
+  getRecordsPage():any[]{
+    const startIndex = (this.currentPage-1)*5;
+    this.pageExpectedReturnValue=this.expectedReturnValue.slice(startIndex,startIndex+5);
+    this.pageMutualStockValue=this.mutualStockValue.slice(startIndex,startIndex+5);
+    this.pageMutualFunds=this.mutualfunds.slice(startIndex,startIndex+5);
+    return this.pageMutualFunds;
   }
 
 }
