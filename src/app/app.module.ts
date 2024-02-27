@@ -27,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { GoldComponent } from './gold/gold.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
     FloatingRateBondComponent,
     NavbarComponent,
     PortfolioComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    GoldComponent
   ],
   imports: [
     BrowserModule,
