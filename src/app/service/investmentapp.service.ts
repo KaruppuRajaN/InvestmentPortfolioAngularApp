@@ -23,5 +23,7 @@ export class InvestmentappService {
   purchaseMutualFunds(purchasedMF:PurchasedMutualFunds[]):Observable<string>{
     return this.http.post<string>(this.apiUrl+"stocks/purchasemutualfunds",purchasedMF);
   }
+
+  
   
 }

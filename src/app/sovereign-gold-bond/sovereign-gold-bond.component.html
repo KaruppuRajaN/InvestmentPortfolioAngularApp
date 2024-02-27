@@ -7,15 +7,15 @@
     </div>
     <div>
       <label for="gprice"> Current Gold Price :</label>
-      <input type="number" [(ngModel)]="sgb.gprice" name="Gold price" >
+      <input type="number" [(ngModel)]="sgb.gprice" name="Gold price" readonly >
     </div>
     <div>
       <label for="interestRate"> Interest Rate:</label>
-      <input type="number" [(ngModel)]="sgb.interestRate" name="Interest Rate">
+      <input type="number" [(ngModel)]="sgb.interestRate" name="Interest Rate" readonly>
     </div>
     <div>
         <label for="n">Tenure year: </label>
-        <input type="number" [(ngModel)]="sgb.n" name="Tenure year">
+        <input type="number" [(ngModel)]="sgb.n" name="Tenure year" readonly>
       </div>
     <button type="submit">Calculate</button>
   </form>
