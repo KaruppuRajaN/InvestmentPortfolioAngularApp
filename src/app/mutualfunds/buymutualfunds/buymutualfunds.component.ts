@@ -55,11 +55,24 @@ export class BuymutualfundsComponent {
       });
   }
   onSubmit(){
-    
-    if(this.capsCategory==''||this.capsCategory==undefined)
-      return;
-    this.getAllMutualFunds(this.capsCategory,this.riskCategory,this.paymentAmount);
+    console.log(this.paymentAmount);
+    if(this.capsCategory==''||this.capsCategory==undefined){
+      this.mutualfunds=[];
+      this.expectedReturnValue=[];
+        this.mutualStockValue=[];
+        this.count=0;
     this.buttonClick=true;
+      return;
+    }
+   if(this.paymentAmount<= 0 || this.paymentAmount==null||this.paymentAmount==undefined){
+    this.expectedReturnValue=[];
+        this.mutualStockValue=[];
+        this.mutualfunds=[];
+        this.count=0;
+    this.buttonClick=true;
+    return;
+   }
+    this.getAllMutualFunds(this.capsCategory,this.riskCategory,this.paymentAmount);
   }
   changeOptions(id:number){
     if(id==2){
@@ -108,6 +121,12 @@ export class BuymutualfundsComponent {
         this.reloadDisplayPage.emit(true);
       }
     );
+  }
+  onPaymentChange(){
+    console.log("Ji");
+    if(this.paymentAmount<0){
+      this.paymentAmount=null;
+    }
   }
 
 }

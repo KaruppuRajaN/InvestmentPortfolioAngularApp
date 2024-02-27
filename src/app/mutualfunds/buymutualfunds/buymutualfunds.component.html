@@ -1,4 +1,4 @@
-<div style="margin-top:20px;">
+<div style="margin-top:10px;" class="container">
     <label>Risk Category</label>
     <select [(ngModel)]="riskCategory" (change)="changeOptions(1)">
       <option value="High">High</option>
@@ -12,8 +12,8 @@
       <option value="Mid">Mid</option>
       <option value="Small">Small</option>
     </select>
-    <input type="number" placeholder="Enter Amount you can Spent" [(ngModel)]="paymentAmount">
-    <button type="submit" (click)="onSubmit()">Check Mutual Funds</button>
+    <input type="number" placeholder="Enter Amount you can Spent" [(ngModel)]="paymentAmount" (input)="onPaymentChange()">
+    <button  type="submit" style="background-color: aqua;" (click)="onSubmit()">Check Mutual Funds</button>
  
     <div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of mutualfunds; let i =index;">
   <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
@@ -23,8 +23,8 @@
     </mat-card-header>
     <mat-card-content>
       <div>
-      <table>
-        <thead>
+      <table >
+        <thead >
           <tr>
             <th>Company Symbol</th>
             <th>Company Name</th>
@@ -34,7 +34,7 @@
             <th>Expected Return</th>
           </tr>
         </thead>
-        <tbody  style="text-align: center;" *ngFor="let mf of mutualfund">
+        <tbody   *ngFor="let mf of mutualfund">
           <tr>
             <td>{{mf.companySymbol}}</td>
             <td>{{mf.companyName}}</td>
