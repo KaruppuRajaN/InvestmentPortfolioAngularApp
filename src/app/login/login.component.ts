@@ -3,6 +3,7 @@ import { InvestmentappService } from '../service/investmentapp.service';
 import { UserProfile } from '../model/UserProfile';
 import { Router } from '@angular/router';
 import { UserinfoComponent } from '../userinfo/userinfo.component';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -20,27 +21,31 @@ export class LoginComponent {
 
   loginWithCredentials(){
     this.investmentappService.investorLogin(this.user).subscribe(
-      (response)=>{
-        this.user = response;
+      (response: HttpResponse<any>)=>{
+        console.log(response);
+        this.user = response as unknown as UserProfile; 
         console.log("Login Successful!!!" + this.user.emailId);
+        window.alert("Login Successful!!!");
         UserinfoComponent.setUser(this.user);
         this.router.navigate(['/myportfolio']);
+        
       },
       (error)=>{
-        console.error('Login Failed!!!');
+        window.alert(error.error.msg);
       }
     )
   }
 
   forgotPassword() {
     this.investmentappService.forgotPassword(this.user).subscribe(
-      (response)=>{
-        this.user = response;
-        console.log("Login Successful!!!" + this.user.emailId);
+      (response: HttpResponse<any>)=>{
+        console.log(response);
+        window.alert("Password sent to your email");
+        this.otpBox=true;
+        
       },
       (error)=>{
-        window.alert('OTP sent to your mail');
-        this.otpBox=true;
+        console.log(error);
         
       }
     )
