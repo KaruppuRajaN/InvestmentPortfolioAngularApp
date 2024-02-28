@@ -33,7 +33,7 @@ export class LoginComponent {
         
       },
       (error)=>{
-        window.alert("error.error.body");
+        window.alert(error.error.body);
       }
     )
   }
