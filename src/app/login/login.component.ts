@@ -8,7 +8,6 @@ import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
@@ -22,16 +21,14 @@ export class LoginComponent {
   loginWithCredentials(){
     this.investmentappService.investorLogin(this.user).subscribe(
       (response: HttpResponse<any>)=>{
-        console.log(response);
         this.user = response as unknown as UserProfile; 
-        console.log("Login Successful!!!" + this.user.emailId);
         window.alert("Login Successful!!!");
         UserinfoComponent.setUser(this.user);
         this.router.navigate(['/myportfolio']);
         
       },
       (error)=>{
-        window.alert(error.error.msg);
+        window.alert(error.error.body);
       }
     )
   }
@@ -39,30 +36,23 @@ export class LoginComponent {
   forgotPassword() {
     this.investmentappService.forgotPassword(this.user).subscribe(
       (response: HttpResponse<any>)=>{
-        console.log(response);
-        window.alert("Password sent to your email");
+        window.alert(response.body);
         this.otpBox=true;
-        
       },
       (error)=>{
-        console.log(error);
-        
+        window.alert(error.error.body);
       }
     )
   }
 
   changePass() {
     this.investmentappService.updatePassword(this.user).subscribe(
-      (response)=>{
-        this.user = response;
-        console.log("New password changes Successful!!!" + this.user.emailId);
-        this.otpBox=false;
+      (response: HttpResponse<any>)=>{
+        window.alert(response.body);
+          this.otpBox=false;
       },
       (error)=>{
-        console.log("New password changes Successful!!!" + this.user.emailId);
-        this.otpBox=false;
-        window.alert('password changes successfully');
-        this.router.navigate(['/login-signup']);
+        window.alert(error.error.body);
       }
     )
   }

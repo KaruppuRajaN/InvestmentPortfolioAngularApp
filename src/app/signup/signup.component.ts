@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { UserProfile } from '../model/UserProfile';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
+import { LoginSignupComponent } from '../login-signup/login-signup.component';
 
 @Component({
   selector: 'app-signup',
@@ -16,14 +18,13 @@ export class SignupComponent {
 
   SignUpNow():any {
     this.investmentappService.investorSignUp(this.userSignUp).subscribe(
-      (response)=>{
-        window.alert('account created');
-        console.log(response);
+      (response: HttpResponse<any>)=>{
+        window.alert(response.body);
+        LoginSignupComponent.isLogin = true;
         this.router.navigate(['/login-signup']);
       },
       (error)=>{
-        window.alert('account created');
-        this.router.navigate(['/home']);
+        window.alert(error.error.body)
       }
     )
   }
