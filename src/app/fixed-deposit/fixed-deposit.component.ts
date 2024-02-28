@@ -31,7 +31,7 @@ export class FixedDepositCalculatorComponent implements OnInit {
 
   calculate() {
     // Calculate maturity amount
-    this.fixDep.maturityAmount = this.fixDep.depositAmount * Math.pow((1 + (this.fixDep.interestRate / 100)), this.fixDep.tenureYears);
+    this.fixDep.maturityAmount = this.fixDep.depositAmount * Math.pow((1 + (this.fixDep.rate / 100)), this.fixDep.tenureYears);
 
     // Calculate interest payout frequency
     let interestPayoutFactor = 1;

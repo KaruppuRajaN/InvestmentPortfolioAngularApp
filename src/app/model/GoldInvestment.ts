@@ -1,3 +1,5 @@
+import { UserProfile } from "./UserProfile";
+
 export class GoldInvestment {
     gid: number=0;
     principle:number =0;
@@ -9,4 +11,5 @@ export class GoldInvestment {
     amount: number=0;
     months: number=0;
     todaygoldrate:number=6344;
+    goldHolder: UserProfile | undefined;
 }  
