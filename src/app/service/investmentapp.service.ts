@@ -19,6 +19,10 @@ export class InvestmentappService {
 
   constructor(private http:HttpClient) { }
 
+  investorSignUp(userSignUp: UserProfile):Observable<any> {
+    return this.http.post<any>(this.apiUrl+"user/signup",userSignUp);
+  }
+
   investorLogin(user:UserProfile):Observable<any>{
     return this.http.post<any>(this.apiUrl+"user/login",user);
   }
