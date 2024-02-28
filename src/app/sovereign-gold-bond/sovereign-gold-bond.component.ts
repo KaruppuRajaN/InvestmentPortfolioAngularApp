@@ -18,11 +18,17 @@ export class SovereignGoldBondComponent implements OnInit{
   constructor(private service: InvestmentappService, private router: Router){
     this.sgb.n=5;
     this.sgb.interestRate = 2.5;
-    this.sgb.gprice =6245;
   }
 
   
-ngOnInit(){}
+ngOnInit(){
+  this.service.getGoldPrice().subscribe(
+    (response) => { 
+        console.log(response);
+        this.sgb.gprice = response.price_gram_24k;
+     }
+  );
+}
 
 calculate() {
   

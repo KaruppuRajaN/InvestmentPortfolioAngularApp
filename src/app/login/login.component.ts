@@ -19,6 +19,9 @@ export class LoginComponent {
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   loginWithCredentials(){
+
+    this.user.password = btoa(this.user.password); // Using Base64 encoding
+    
     this.investmentappService.investorLogin(this.user).subscribe(
       (response: HttpResponse<any>)=>{
         this.user = response as unknown as UserProfile; 

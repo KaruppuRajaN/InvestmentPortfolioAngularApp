@@ -17,6 +17,9 @@ export class SignupComponent {
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   SignUpNow():any {
+
+    this.userSignUp.password = btoa(this.userSignUp.password); // Using Base64 encoding
+
     this.investmentappService.investorSignUp(this.userSignUp).subscribe(
       (response: HttpResponse<any>)=>{
         window.alert(response.body);
