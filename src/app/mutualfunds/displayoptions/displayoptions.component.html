@@ -2,6 +2,7 @@
     <div class="centered-content">
     <button mat-stroked-button color="primary" (click)="changeOptions(1)" [ngStyle]="{'background-color':buyButton?'#E2DFD2':'#ffffff'}">Buy Mutual Funds</button>
     <button mat-stroked-button color="primary" (click)="changeOptions(2)" [ngStyle]="{'background-color':mymfButton?'#E2DFD2':'#ffffff'}" style="margin-left: 10px">My Mutual Funds</button>
+    <button  mat-raised-button disabled style="position: absolute;right:0;background-color: aquamarine; margin-right: 30px;"><b>Wallet Balance - {{walletBalance|round:2}}</b></button>
 </div>
 </div>
 <app-buymutualfunds *ngIf="buyButton"></app-buymutualfunds>

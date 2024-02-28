@@ -16,6 +16,7 @@ export class NavbarComponent {
         { label: 'Recurring Deposit', path: '/deposits/rd' }
       ]
     },
+    
     { label: 'Gold', path: '/gold' },
     { label: 'Bonds', dropdownItems: [
       { label: 'Soveriegn Gold Bond', path: '/bonds/sgb' },
@@ -23,7 +24,8 @@ export class NavbarComponent {
       ]
     },
     { label: 'Mutual Funds', path: '/mfunds' },
-    { label: 'My Portfolio', path: '/myportfolio' }
+    { label: 'My Portfolio', path: '/myportfolio' },
+    { path: '/mutualprocess', }
   ];
 
 }
