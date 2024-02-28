@@ -1,3 +1,5 @@
+import { UserProfile } from "./UserProfile";
+
 export class FloatingRateBonds{
    
 	initialRate : number =0;
@@ -9,4 +11,6 @@ export class FloatingRateBonds{
 	time : number = 0;
     interestAmount : number =0;
 	finalReturns : number =0;
+	frbHolder: UserProfile | undefined;
+
 }

@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './displayoptions.component.css'
 })
 export class DisplayoptionsComponent {
+
+  changePageToMyMf:boolean=false;
   buyButton:boolean=true;
   mymfButton:boolean=false;
   changeOptions(id:number):void{
@@ -18,5 +20,12 @@ export class DisplayoptionsComponent {
       this.mymfButton=true;
     }
   }
+  reloadComponentForShowingMyMF(value:boolean){
+    console.log("kasias");
+    this.buyButton=false;
+    this.mymfButton=true;
+  }
+
+
 
 }

@@ -38,4 +38,6 @@
     <p>Total Interest: {{ fixDep.totalInterest | currency: 'INR' }}</p>
     <p>Monthly Interest: {{ fixDep.monthlyInterest | currency: 'INR' }}</p>
   </div>
+
+  <button type="submit" (click)="submitFD()" >Invest Now</button>
 </div>

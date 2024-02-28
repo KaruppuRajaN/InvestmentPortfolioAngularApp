@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RecurringDeposit } from '../model/RecurringDeposit';
+import { InvestmentappService } from '../service/investmentapp.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recurring-deposit',
@@ -9,7 +11,8 @@ import { RecurringDeposit } from '../model/RecurringDeposit';
 export class RecurringDepositComponent {
 
    rd: RecurringDeposit = new RecurringDeposit();
-  constructor() {
+
+  constructor(private service:InvestmentappService, private router: Router) {
     this.rd.startDate = new Date();
   }
 
@@ -40,6 +43,21 @@ export class RecurringDepositComponent {
     this.rd.totalInterestEarned = totalInterestEarned;
     this.rd.maturityAmount = maturityAmount;
     this.rd.maturityDate = maturityDate;
+  }
+
+  saveProduct(recDep:RecurringDeposit):any{
+    this.service.saveRecDep(recDep).subscribe(
+      (response) => { 
+        if(response){
+          window.alert("FD succesfully submitted");
+          this.router.navigate(['/home']);
+        }
+       }
+    );
+  }
+
+  submitRD() {
+    this.saveProduct(this.rd);
   }
 
 }

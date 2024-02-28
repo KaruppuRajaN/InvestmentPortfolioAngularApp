@@ -28,5 +28,7 @@
       <p>Maturity Amount: {{ rd.maturityAmount | currency:'INR' }}</p>
       <p>Maturity Date: {{ rd.maturityDate | date }}</p>
     </div>
+
+    <button type="submit" (click)="submitRD()" >Invest Now</button>
   </div>
   

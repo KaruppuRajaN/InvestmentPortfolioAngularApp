@@ -15,8 +15,9 @@
     </div>
     <div>
         <label for="n">Tenure year: </label>
-        <input type="number" [(ngModel)]="sgb.n" name="Tenure year" readonly>
+        <input type="number" [(ngModel)] ="sgb.n" name="Tenure year" readonly>
       </div>
+    <!--<p>n : {{sgb.n}}</p>-->
     <button type="submit">Calculate</button>
   </form>
 
@@ -25,6 +26,7 @@
    
     <p>Total Interest : {{ sgb.totalInterest | currency: 'INR' }}</p>
     <p>Maturity Value : {{ sgb.maturityValue  | currency: 'INR' }}</p>
-     
+    <button type="submit" (click)="submitSGB" >Invest Now</button>
+  </div>
 </div>
 

@@ -1,0 +1,17 @@
+<div class="banner1">
+    <div class="login-signup">
+        <h1>
+            <div>
+                <button (click)="swapLogin(0)">Login</button>
+                <button (click)="swapLogin(1)">SignUp</button>
+            </div>
+        </h1>
+  
+    <div *ngIf="isLogin; else signUp">
+        <app-login></app-login>
+    </div>
+    <ng-template #signUp>
+        <app-signup></app-signup>
+    </ng-template>
+    </div>
+</div>

@@ -22,6 +22,13 @@ import { LoginComponent } from './login/login.component';
 import { SovereignGoldBondComponent } from './sovereign-gold-bond/sovereign-gold-bond.component';
 import { FloatingRateBondComponent } from './floating-rate-bond/floating-rate-bond.component';
 import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { GoldComponent } from './gold/gold.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +48,11 @@ import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit
     SignupComponent,
     LoginComponent,
     SovereignGoldBondComponent,
-    FloatingRateBondComponent
+    FloatingRateBondComponent,
+    NavbarComponent,
+    PortfolioComponent,
+    LoginSignupComponent,
+    GoldComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +64,9 @@ import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit
     MatCardModule,
     MatSelectModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration(),

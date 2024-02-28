@@ -1,5 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { FixedDeposit } from '../model/FixedDeposit';
+import { InvestmentappService } from '../service/investmentapp.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fixed-deposit',
@@ -12,7 +14,7 @@ export class FixedDepositCalculatorComponent implements OnInit {
 
   fixDep:FixedDeposit = new FixedDeposit(); 
  
-  constructor() {
+  constructor(private service:InvestmentappService, private router: Router) {
     this.currentDate = new Date().toISOString().substr(0, 10);
   }
 
@@ -47,4 +49,21 @@ export class FixedDepositCalculatorComponent implements OnInit {
     this.fixDep.fdMaturityDate = new Date(this.fixDep.fdCreationDate);
     this.fixDep.fdMaturityDate.setFullYear(this.fixDep.fdMaturityDate.getFullYear() + this.fixDep.tenureYears);
   }
+
+  saveProduct(fixDep:FixedDeposit):any{
+    this.service.saveFixDep(fixDep).subscribe(
+      (response) => { 
+        if(response){
+          window.alert("FD succesfully submitted");
+          this.router.navigate(['/home']);
+        }
+       }
+    );
+  }
+
+  submitFD() {
+    this.saveProduct(this.fixDep);
+  }
+
+
 }

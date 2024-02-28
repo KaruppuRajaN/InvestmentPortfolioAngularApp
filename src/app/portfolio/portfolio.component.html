@@ -1,0 +1,12 @@
+<div *ngIf="!emptyResult" >
+
+    <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
+        <mat-card-header >
+            <mat-card-title>
+            <span><b>{{portfolio | json}}</b></span>
+            <span style="color: #32CD32; position:absolute; right: 10px;"><b></b></span></mat-card-title>
+        </mat-card-header>
+    </mat-card>
+
+    </div>
+    <div *ngIf="emptyResult" style="color: #32CD32;"><br><br><h1 style="text-align: center;">Your Bucket is Empty. Kindly Invest for Happy with Returns!!!</h1></div>

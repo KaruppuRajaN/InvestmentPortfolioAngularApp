@@ -1,1 +1,44 @@
-<p>ownmutualfunds works!</p>
+<div *ngIf="!emptyResult" >
+
+<div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of mutualfunds; let i =index;">
+<mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
+    <mat-card-header >
+              <mat-card-title>
+                <span><b>Mutual Fund Price:{{boughtAmount[i]|round:2}} </b></span>
+                <span style="color: #32CD32; position:absolute; right: 10px;"><b>Current Return:{{currentReturn[i]|round:2}}</b></span></mat-card-title>
+      
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+      <table align="center">
+        <thead>
+          <tr>
+            <th>Company Symbol</th>
+            <th>Company Name</th>
+            <th>Bought Amount</th>
+            <th>Percentage Alloted</th>
+            <th>Current Return Amount</th>
+          </tr>
+        </thead>
+        <tbody  style="text-align: center;" *ngFor="let mf of mutualfund">
+          <tr>
+            <td>{{mf.companySymbol}}</td>
+            <td>{{mf.companyName}}</td>
+            <td>{{mf.boughtAmount|round:2}}</td>
+            <td>{{mf.boughtPercentage|round:2}}</td>
+            <td>{{mf.currentReturnAmount|round:2}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+        <br><br><br>
+      </mat-card-content>
+    <div style="position: relative;">
+      <button (click)="withdrawMF(mutualfund)" mat-button style="background-color: red;width: 150px;position:absolute; right: 50px;bottom:0; margin-bottom: 10px;">Sell(Withdraw)</button>
+    </div>
+  </mat-card>
+  </div>
+</div>
+<div *ngIf="emptyResult" style="color: #32CD32;"><br><br><h1 style="text-align: center;">Your Bucket is Empty. Kindly Buy the Mutual Funds and Happy with Returns!!!</h1></div>
