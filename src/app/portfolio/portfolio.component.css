@@ -1,0 +1,59 @@
+mat-card {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  @media screen and (min-width: 600px) {
+    mat-card {
+      display: flex;
+    }
+  }
+  
+  mat-card-header {
+    padding: 16px;
+    background-color: #D8BFD8;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  mat-card-title {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table th {
+    background-color: #D8BFD8;
+    font-weight: bold;
+  }
+  
+  @media screen and (max-width: 599px) {
+    mat-card-title {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    mat-card-title article {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    
+    mat-card-title aside {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }

@@ -15,6 +15,13 @@ export class PortfolioComponent {
 
 
   portfolio:Portfolio = new Portfolio(); 
+  userdetails:any=[];
+  goldinv:any=[];
+  fixed:any=[];
+  recurring:any=[];
+  ratebond:any=[];
+  goldbond:any=[];
+  
  
   constructor(private service:InvestmentappService, private router: Router) {
     
@@ -26,6 +33,14 @@ export class PortfolioComponent {
       (response) => { 
         console.log(response);
         this.portfolio=response;
+        
+        this.userdetails=this.portfolio.user;
+        this.fixed=this.portfolio.fixedDeposists;
+        this.recurring=this.portfolio.recurringDeposits
+        this.goldinv=this.portfolio.golds;
+        this.ratebond=this.portfolio.floatingRateBonds;
+        this.goldbond=this.portfolio.sovereignGoldBonds;
+        
         }
     );
   }
