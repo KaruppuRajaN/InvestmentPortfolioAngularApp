@@ -22,6 +22,7 @@ export class PortfolioComponent {
 
   ngOnInit():void{
     this.portfolio.user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.portfolio.user.userId);
     this.service.getAllInvestments(this.portfolio.user.userId).subscribe(
       (response) => { 
         console.log(response);

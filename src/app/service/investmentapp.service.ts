@@ -63,6 +63,7 @@ export class InvestmentappService {
   }
   getAllInvestments(userId:number):Observable<Portfolio>{
     const url = `${this.apiUrl}portfolio/`+userId;
+    console.log(url);
     return this.http.get<Portfolio>(url);
   }
   

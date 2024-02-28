@@ -51,6 +51,7 @@ export class LoginComponent {
   }
 
   changePass() {
+    this.user.password = btoa(this.user.password); // Using Base64 encoding
     this.investmentappService.updatePassword(this.user).subscribe(
       (response: HttpResponse<any>)=>{
         window.alert(response.body);
