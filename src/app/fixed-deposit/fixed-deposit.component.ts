@@ -26,7 +26,8 @@ export class FixedDepositCalculatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fixDep.fdHolder = UserinfoComponent.user;
+     // Retrieving user object from local storage
+     this.fixDep.fdHolder = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   calculate() {

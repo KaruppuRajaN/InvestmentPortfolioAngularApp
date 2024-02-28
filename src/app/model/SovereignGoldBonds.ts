@@ -1,3 +1,5 @@
+import { UserProfile } from "./UserProfile";
+
 export class SovereignGoldBonds{
     iamount : number = 0;
     gprice : number = 0;
@@ -6,6 +8,6 @@ export class SovereignGoldBonds{
     totalInterest : number =0;
     maturityValue : number = 0;
     facevalue : number =0;
-
+    sgbHolder: UserProfile | undefined;
 
 }

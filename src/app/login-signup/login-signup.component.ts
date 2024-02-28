@@ -10,18 +10,23 @@ import { Router } from '@angular/router';
 })
 export class LoginSignupComponent {
 
+
   isEmpty: boolean = true;
 
   constructor(private service:InvestmentappService, private router: Router){}
 
-  isLogin:boolean = true;
+  public static isLogin:boolean = true;
+
+  toLogin(): any {
+    return LoginSignupComponent.isLogin;
+    }
 
   swapLogin(swap:number){
     if(swap===0){
-      this.isLogin = true;
+      LoginSignupComponent.isLogin = true;
     }
     else{
-      this.isLogin = false;
+      LoginSignupComponent.isLogin = false;
     }
   }
 }

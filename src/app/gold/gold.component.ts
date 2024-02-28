@@ -18,6 +18,12 @@ export class GoldComponent implements OnInit{
 
   ngOnInit() {
     this.gold.goldHolder = UserinfoComponent.user;
+    this.service.getGoldPrice().subscribe(
+      (response) => { 
+          console.log(response);
+          this.gold.todaygoldrate = response.price_gram_24k;
+       }
+    );
   }
  
   calculate() {
