@@ -17,10 +17,27 @@ export class OwnmutualfundsComponent {
   emptyResult:boolean=false;
   boughtAmount:number[]=[];
   currentReturn:number[]=[];
+  pageCurrentReturnValue:number[]=[];
+  pageBoughtAmount:number[]=[];
+  pageMutualFunds:PurchasedMutualFunds[][]=[];
+  currentPage:number=1;
   count=0;
   constructor(private service:InvestmentappService){}
 
   ngOnInit():void{
+    this.mutualfunds=[];
+  this.userProfile=new UserProfile();
+  
+  this.emptyResult=false;
+  this.boughtAmount=[];
+  this.currentReturn=[];
+  this.pageBoughtAmount=[];
+  
+  this.pageCurrentReturnValue=[];
+  this.pageMutualFunds=[];
+  this.count=0;
+  this.currentPage=1;
+
     this.userProfile.userId=1;
     this.service.getAllOwnMutualFunds(this.userProfile).subscribe((response)=>
     {
@@ -40,6 +57,7 @@ export class OwnmutualfundsComponent {
             this.count+=1;
           })
       }
+      this.pageMutualFunds=this.getRecordsPage();
     },
     (error)=>this.emptyResult=true);
     
@@ -50,12 +68,23 @@ export class OwnmutualfundsComponent {
     this.service.withdrawMutualFunds(mutualFund).subscribe(
       (response)=>{
         alert("Withdrawn is Pending!!!\nAmount will be credited in 1 day if Mutual fund withdrawn process Successfully");
-
+        this.ngOnInit();
       },
       (error)=>{
         alert("Withdrawn is Pending!!!\nAmount will be credited in 1 day if Mutual fund withdrawn process Successfully");
+        this.ngOnInit();
       }
     );
   }
 
+  getRecordsPage():any[]{
+    const startIndex = (this.currentPage-1)*5;
+    this.pageCurrentReturnValue=this.currentReturn.slice(startIndex,startIndex+5);
+    this.pageBoughtAmount=this.boughtAmount.slice(startIndex,startIndex+5);
+    this.pageMutualFunds=this.mutualfunds.slice(startIndex,startIndex+5);
+    return this.pageMutualFunds;
+  }
+  get totalPages():number{
+    return Math.ceil(this.mutualfunds.length/5);
+  }
 }

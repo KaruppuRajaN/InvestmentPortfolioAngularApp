@@ -10,6 +10,7 @@ import { Portal } from '@angular/cdk/portal';
 import { Portfolio } from '../model/Portfolio';
 import { FloatingRateBonds } from '../model/FloatingRateBonds';
 import { SovereignGoldBonds } from '../model/SovereignGoldBonds';
+import { GoldInvestment } from '../model/GoldInvestment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,20 @@ export class InvestmentappService {
 
   constructor(private http:HttpClient) { }
 
+  investorSignUp(userSignUp: UserProfile):Observable<any> {
+    return this.http.post<any>(this.apiUrl+"user/signup",userSignUp);
+  }
+
   investorLogin(user:UserProfile):Observable<any>{
     return this.http.post<any>(this.apiUrl+"user/login",user);
+  }
+
+  forgotPassword(user: UserProfile):Observable<any> {
+    return this.http.put<any>(this.apiUrl+"user/forgotPassword",user);
+  }
+
+  updatePassword(user: UserProfile):Observable<any> {
+    return this.http.put<any>(this.apiUrl+"user/updatePassword",user);
   }
 
   getAllMutualFunds(FilterMutualFundOptions:{capsCategory:string,riskCategory:string,paymentAmount:number}):Observable<MutualFunds[][]>{
@@ -43,6 +56,9 @@ export class InvestmentappService {
   }
   saveRecDep(recDep:RecurringDeposit):Observable<boolean> {
     return this.http.post<boolean>(this.apiUrl+"deposit/submit/rd",recDep);
+  }
+  saveGoldInv(gold: GoldInvestment):Observable<boolean> {
+    return this.http.post<boolean>(this.apiUrl+"gold/buy",gold);
   }
   getAllInvestments(userId:number):Observable<Portfolio>{
     const url = `${this.apiUrl}portfolio/`+userId;

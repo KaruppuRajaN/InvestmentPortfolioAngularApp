@@ -2,6 +2,9 @@ import { Component ,OnInit} from '@angular/core';
 import { FixedDeposit } from '../model/FixedDeposit';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { Router } from '@angular/router';
+import { UserInfo } from 'os';
+import { UserProfile } from '../model/UserProfile';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-fixed-deposit',
@@ -11,7 +14,6 @@ import { Router } from '@angular/router';
 export class FixedDepositCalculatorComponent implements OnInit {
   
   currentDate: string | undefined;
-
   fixDep:FixedDeposit = new FixedDeposit(); 
  
   constructor(private service:InvestmentappService, private router: Router) {
@@ -20,34 +22,36 @@ export class FixedDepositCalculatorComponent implements OnInit {
 
    // This function is called when the date input value changes
    onDateChange(event: any) {
-    this.fixDep.fdCreationDate = new Date(event.target.value);
+    this.fixDep.StartDate = new Date(event.target.value);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fixDep.fdHolder = UserinfoComponent.user;
+  }
 
   calculate() {
     // Calculate maturity amount
-    this.fixDep.maturityAmount = this.fixDep.depositAmount * Math.pow((1 + (this.fixDep.interestRate / 100)), this.fixDep.tenureYears);
+    this.fixDep.maturityAmount = this.fixDep.depositAmount * Math.pow((1 + (this.fixDep.rate / 100)), this.fixDep.tenureYears);
 
     // Calculate interest payout frequency
     let interestPayoutFactor = 1;
-    if (this.fixDep.interestPayout === 'Monthly') {
+    if (this.fixDep.interestPayoutType === 'Monthly') {
       interestPayoutFactor = 12;
-    } else if (this.fixDep.interestPayout === 'Quarterly') {
+    } else if (this.fixDep.interestPayoutType === 'Quarterly') {
       interestPayoutFactor = 4;
-    } else if (this.fixDep.interestPayout === 'Half-Yearly') {
+    } else if (this.fixDep.interestPayoutType === 'Half-Yearly') {
       interestPayoutFactor = 2;
     } // Annually has a factor of 1, so no need to change it
 
     // Calculate total interest
-    this.fixDep.totalInterest = this.fixDep.maturityAmount - this.fixDep.depositAmount;
+    this.fixDep.interestPayoutAmount = this.fixDep.maturityAmount - this.fixDep.depositAmount;
 
     // Calculate monthly interest
-    this.fixDep.monthlyInterest = this.fixDep.totalInterest / (this.fixDep.tenureYears * interestPayoutFactor);
+    this.fixDep.monthlyInterest = this.fixDep.interestPayoutAmount / (this.fixDep.tenureYears * interestPayoutFactor);
 
     // Calculate FD maturity date
-    this.fixDep.fdMaturityDate = new Date(this.fixDep.fdCreationDate);
-    this.fixDep.fdMaturityDate.setFullYear(this.fixDep.fdMaturityDate.getFullYear() + this.fixDep.tenureYears);
+    this.fixDep.EndDate = new Date(this.fixDep.StartDate);
+    this.fixDep.EndDate.setFullYear(this.fixDep.EndDate.getFullYear() + this.fixDep.tenureYears);
   }
 
   saveProduct(fixDep:FixedDeposit):any{
@@ -55,14 +59,20 @@ export class FixedDepositCalculatorComponent implements OnInit {
       (response) => { 
         if(response){
           window.alert("FD succesfully submitted");
-          this.router.navigate(['/home']);
+          this.router.navigate(['/myportfolio']);
         }
        }
     );
   }
 
   submitFD() {
-    this.saveProduct(this.fixDep);
+    window.alert("Confirm Submission" + this.fixDep.fdHolder.walletBalance + " " + this.fixDep.depositAmount);
+    if(this.fixDep.fdHolder.walletBalance<=this.fixDep.depositAmount){
+      window.alert("Please add money to your wallet to invest this FD");
+    }else{
+      this.saveProduct(this.fixDep);
+    }
+    
   }
 
 
