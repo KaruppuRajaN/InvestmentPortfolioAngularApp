@@ -10,6 +10,6 @@ export class GoldInvestment {
     monthlyrate: number=0;
     amount: number=0;
     months: number=0;
-    todaygoldrate:number=6344;
+    todaygoldrate:number | undefined;
     goldHolder: UserProfile | undefined;
 }  

@@ -26,7 +26,7 @@ export class RecurringDepositComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rd.rdHolder = UserinfoComponent.user;
+    this.rd.rdHolder = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   calculate() {
