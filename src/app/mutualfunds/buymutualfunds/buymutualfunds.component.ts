@@ -2,6 +2,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { InvestmentappService } from '../../service/investmentapp.service';
 import { MutualFunds } from '../../model/mutualfunds';
 import {PurchasedMutualFunds} from '../../model/purchasedmutualfunds';
+import { UserinfoComponent } from '../../userinfo/userinfo.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpResponse } from '@angular/common/http';
+import { UserProfile } from '../../model/UserProfile';
+import { DisplayoptionsComponent } from '../displayoptions/displayoptions.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +19,7 @@ export class BuymutualfundsComponent {
   @Output() reloadDisplayPage=new EventEmitter<boolean>();
   capsCategory:string='';
   timestampvalue:string;
-  
+  walletBalance:number;
   pmfcount=0;
   buttonClick:boolean=false;
   actionDate:string='';
@@ -22,6 +28,7 @@ export class BuymutualfundsComponent {
   mutualfunds:MutualFunds[][]=[];
   mutualStockValue:number[]=[];
   expectedReturnValue:number[]=[];
+
 
   currentPage:number=1;
   pageMutualFunds:MutualFunds[][]=[];
@@ -32,9 +39,22 @@ export class BuymutualfundsComponent {
   count:number=0;
   pmfdata:MutualFunds[]=[];
   purchasedMF:PurchasedMutualFunds[]=[];
-  constructor(private service:InvestmentappService){}
+  constructor(private service:InvestmentappService,private _snackBar: MatSnackBar,private router: Router){}
 
   ngOnInit():void{
+    this.service.investorLogin(UserinfoComponent.user).subscribe(
+      (response: HttpResponse<any>)=>{
+        UserinfoComponent.user = response as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+        console.log(UserinfoComponent.user);
+        
+      },
+      (error)=>{
+        UserinfoComponent.user = error as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+      }
+    );
+    this.walletBalance=UserinfoComponent.user.walletBalance;
   }
   getAllMutualFunds(capsCategory:string,riskCategory:string,paymentAmount:number){
     this.service.getAllMutualFunds({capsCategory,riskCategory,paymentAmount}).subscribe(
@@ -93,6 +113,7 @@ export class BuymutualfundsComponent {
     this.buttonClick=true;
     return;
    }
+  
     this.getAllMutualFunds(this.capsCategory,this.riskCategory,this.paymentAmount);
   }
   changeOptions(id:number){
@@ -119,12 +140,15 @@ export class BuymutualfundsComponent {
     return;
     this.pmfdata=mf;
     this.pmfcount=0;
+    
     this.timestampvalue=new Date(Date.now()).toString();
+    let overallBoughtAmount=0;
     this.pmfdata.forEach(pm=>{
       this.purchasedMF[this.pmfcount]=new PurchasedMutualFunds();
-      this.purchasedMF[this.pmfcount].userId=1; //Temporary
+      this.purchasedMF[this.pmfcount].userId=UserinfoComponent.user.userId; //Temporary
       this.purchasedMF[this.pmfcount].purchaseId=this.timestampvalue;
       this.purchasedMF[this.pmfcount].boughtAmount=pm.calculatedAnnualAmount;
+      overallBoughtAmount+=pm.calculatedAnnualAmount;
       this.purchasedMF[this.pmfcount].boughtPercentage=pm.allocationPercentageFromMoney;
       this.purchasedMF[this.pmfcount].companyName=pm.companyName;
       this.purchasedMF[this.pmfcount].companySymbol=pm.companySymbol;
@@ -132,8 +156,13 @@ export class BuymutualfundsComponent {
       this.pmfcount+=1;
       
     });
+    if(this.walletBalance<overallBoughtAmount){
+      this._snackBar.open("Wallet Balance is not enough!! Kindly add Wallet Amount!!", "OK");
+      return;
+    }
     this.service.purchaseMutualFunds(this.purchasedMF).subscribe(
       (response)=>{
+        
         alert("Purchasing is Processing... Kindly Check in your Bucket List!!!" );
         this.reloadDisplayPage.emit(true);
       },
@@ -142,6 +171,21 @@ export class BuymutualfundsComponent {
         this.reloadDisplayPage.emit(true);
       }
     );
+
+    this.service.investorLogin(UserinfoComponent.user).subscribe(
+      (response: HttpResponse<any>)=>{
+        UserinfoComponent.user = response as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+        console.log(UserinfoComponent.user);
+        
+      },
+      (error)=>{
+        UserinfoComponent.user = error as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+      }
+    );
+    this.router.navigate(['/mutualprocess']);
+
   }
   onPaymentChange(){
     if(this.paymentAmount<0){

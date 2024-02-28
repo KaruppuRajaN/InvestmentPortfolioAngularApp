@@ -13,5 +13,5 @@ export class UserProfile{
 	aadharNumber:string;
 	panNumber:string;
 	walletBalance:number;
-	secQuestion:string;
+	tempOTP:number;
 }

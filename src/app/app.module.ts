@@ -28,6 +28,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { GoldComponent } from './gold/gold.component';
+import { MutualprocessComponent } from './mutualfunds/mutualprocess/mutualprocess.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { GoldComponent } from './gold/gold.component';
     NavbarComponent,
     PortfolioComponent,
     LoginSignupComponent,
-    GoldComponent
+    GoldComponent,
+    MutualprocessComponent
   ],
   imports: [
     BrowserModule,
