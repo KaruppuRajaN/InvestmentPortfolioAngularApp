@@ -26,9 +26,14 @@ export class InvestmentappService {
     return this.http.post<any>(this.apiUrl+"user/signup",userSignUp);
   }
 
+  investorDetails(user:UserProfile):Observable<any>{
+    return this.http.get<any>(this.apiUrl+"user/profile/"+user.userId);
+  }
+
   investorLogin(user:UserProfile):Observable<any>{
     return this.http.post<any>(this.apiUrl+"user/login",user);
   }
+
 
   forgotPassword(user: UserProfile):Observable<any> {
     return this.http.put<any>(this.apiUrl+"user/forgotPassword",user);

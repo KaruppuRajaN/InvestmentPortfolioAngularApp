@@ -19,7 +19,7 @@ export class BuymutualfundsComponent {
   @Output() reloadDisplayPage=new EventEmitter<boolean>();
   capsCategory:string='';
   timestampvalue:string;
-  walletBalance:number;
+  walletBalance:number=UserinfoComponent.user.walletBalance;
   pmfcount=0;
   buttonClick:boolean=false;
   actionDate:string='';
@@ -42,7 +42,7 @@ export class BuymutualfundsComponent {
   constructor(private service:InvestmentappService,private _snackBar: MatSnackBar,private router: Router){}
 
   ngOnInit():void{
-    this.service.investorLogin(UserinfoComponent.user).subscribe(
+    this.service.investorDetails(UserinfoComponent.user).subscribe(
       (response: HttpResponse<any>)=>{
         UserinfoComponent.user = response as unknown as UserProfile; 
         this.walletBalance=UserinfoComponent.user.walletBalance;
@@ -160,6 +160,7 @@ export class BuymutualfundsComponent {
       this._snackBar.open("Wallet Balance is not enough!! Kindly add Wallet Amount!!", "OK");
       return;
     }
+    else{
     this.service.purchaseMutualFunds(this.purchasedMF).subscribe(
       (response)=>{
         
@@ -172,8 +173,9 @@ export class BuymutualfundsComponent {
       }
     );
 
-    this.service.investorLogin(UserinfoComponent.user).subscribe(
+    this.service.investorDetails(UserinfoComponent.user).subscribe(
       (response: HttpResponse<any>)=>{
+
         UserinfoComponent.user = response as unknown as UserProfile; 
         this.walletBalance=UserinfoComponent.user.walletBalance;
         console.log(UserinfoComponent.user);
@@ -185,6 +187,7 @@ export class BuymutualfundsComponent {
       }
     );
     this.router.navigate(['/mutualprocess']);
+    }
 
   }
   onPaymentChange(){
