@@ -26,9 +26,14 @@ export class InvestmentappService {
     return this.http.post<any>(this.apiUrl+"user/signup",userSignUp);
   }
 
+  investorDetails(user:UserProfile):Observable<any>{
+    return this.http.get<any>(this.apiUrl+"user/profile/"+user.userId);
+  }
+
   investorLogin(user:UserProfile):Observable<any>{
     return this.http.post<any>(this.apiUrl+"user/login",user);
   }
+
 
   forgotPassword(user: UserProfile):Observable<any> {
     return this.http.put<any>(this.apiUrl+"user/forgotPassword",user);
@@ -73,6 +78,10 @@ export class InvestmentappService {
   saveSgb(sgb: SovereignGoldBonds):Observable<boolean> {
     return this.http.post<boolean>(this.apiUrl+"bonds/submit/sgb",sgb);
   }
+  getValues():Observable<FloatingRateBonds> {
+    return this.http.get<FloatingRateBonds>("http://localhost:8085/apiprovider/floatingratebonds");
+  }
+ 
   getGoldPrice():Observable<any> {
    
     const headers = new HttpHeaders({

@@ -26,14 +26,14 @@ export class LoginComponent {
       (response: HttpResponse<any>)=>{
         this.user = response as unknown as UserProfile; 
         window.alert("Login Successful!!!");
-        //UserinfoComponent.setUser(this.user);
+        UserinfoComponent.setUser(this.user);
         // Storing user object in local storage
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.router.navigate(['/myportfolio']);
         
       },
       (error)=>{
-        window.alert(error.error.body);
+        window.alert("error.error.body");
       }
     )
   }

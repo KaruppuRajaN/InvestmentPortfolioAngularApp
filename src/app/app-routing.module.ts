@@ -11,6 +11,7 @@ import { RecurringDepositComponent } from './recurring-deposit/recurring-deposit
 import { SovereignGoldBondComponent } from './sovereign-gold-bond/sovereign-gold-bond.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { MutualprocessComponent } from './mutualfunds/mutualprocess/mutualprocess.component';
 
 const routes: Routes = [
   { path: 'home', component: UserinfoComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'bonds/frb', component: FloatingRateBondComponent },
   { path: 'mfunds', component: DisplayoptionsComponent },
   { path: 'myportfolio', component: PortfolioComponent },  
+  {path:'mutualprocess',component:MutualprocessComponent},
   { path: '', redirectTo: '/login-signup', pathMatch: 'full' },
   { path: '**', redirectTo: '/login-signup' }
 ];

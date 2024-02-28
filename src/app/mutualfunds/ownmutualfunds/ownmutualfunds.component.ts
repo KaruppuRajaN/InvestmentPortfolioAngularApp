@@ -3,6 +3,9 @@ import { InvestmentappService } from '../../service/investmentapp.service';
 import { PurchasedMutualFunds } from '../../model/purchasedmutualfunds';
 import { UserProfile } from '../../model/UserProfile';
 import { empty } from 'rxjs';
+import { UserinfoComponent } from '../../userinfo/userinfo.component';
+import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ownmutualfunds',
@@ -22,11 +25,27 @@ export class OwnmutualfundsComponent {
   pageMutualFunds:PurchasedMutualFunds[][]=[];
   currentPage:number=1;
   count=0;
-  constructor(private service:InvestmentappService){}
+  walletBalance:number=0;
+  constructor(private service:InvestmentappService,private router:Router){}
 
   ngOnInit():void{
     this.mutualfunds=[];
   this.userProfile=new UserProfile();
+
+  this.service.investorDetails(UserinfoComponent.user).subscribe(
+    (response: HttpResponse<any>)=>{
+      UserinfoComponent.user = response as unknown as UserProfile; 
+      this.walletBalance=UserinfoComponent.user.walletBalance;
+      console.log(UserinfoComponent.user);
+      
+    },
+    (error)=>{
+      UserinfoComponent.user = error as unknown as UserProfile; 
+      this.walletBalance=UserinfoComponent.user.walletBalance;
+    }
+  );
+
+  this.walletBalance=UserinfoComponent.user.walletBalance;
   
   this.emptyResult=false;
   this.boughtAmount=[];
@@ -38,7 +57,7 @@ export class OwnmutualfundsComponent {
   this.count=0;
   this.currentPage=1;
 
-    this.userProfile.userId=1;
+    this.userProfile.userId=UserinfoComponent.user.userId;
     this.service.getAllOwnMutualFunds(this.userProfile).subscribe((response)=>
     {
       this.mutualfunds=response;
@@ -75,6 +94,20 @@ export class OwnmutualfundsComponent {
         this.ngOnInit();
       }
     );
+    this.service.investorDetails(UserinfoComponent.user).subscribe(
+      (response: HttpResponse<any>)=>{
+        UserinfoComponent.user = response as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+        console.log(UserinfoComponent.user);
+        
+      },
+      (error)=>{
+        UserinfoComponent.user = error as unknown as UserProfile; 
+        this.walletBalance=UserinfoComponent.user.walletBalance;
+      }
+    );
+    this.router.navigate(['/mutualprocess']);
+
   }
 
   getRecordsPage():any[]{
