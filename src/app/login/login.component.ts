@@ -11,9 +11,10 @@ import { UserinfoComponent } from '../userinfo/userinfo.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  
+
   user : UserProfile = new UserProfile();
   userInfo: UserinfoComponent = new UserinfoComponent();
+  otpBox : boolean = false;
   
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
@@ -30,5 +31,36 @@ export class LoginComponent {
       }
     )
   }
+
+  forgotPassword() {
+    this.investmentappService.forgotPassword(this.user).subscribe(
+      (response)=>{
+        this.user = response;
+        console.log("Login Successful!!!" + this.user.emailId);
+      },
+      (error)=>{
+        window.alert('OTP sent to your mail');
+        this.otpBox=true;
+        
+      }
+    )
+  }
+
+  changePass() {
+    this.investmentappService.updatePassword(this.user).subscribe(
+      (response)=>{
+        this.user = response;
+        console.log("New password changes Successful!!!" + this.user.emailId);
+        this.otpBox=false;
+      },
+      (error)=>{
+        console.log("New password changes Successful!!!" + this.user.emailId);
+        this.otpBox=false;
+        window.alert('password changes successfully');
+        this.router.navigate(['/login-signup']);
+      }
+    )
+  }
+      
 
 }

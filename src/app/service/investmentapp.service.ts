@@ -27,6 +27,14 @@ export class InvestmentappService {
     return this.http.post<any>(this.apiUrl+"user/login",user);
   }
 
+  forgotPassword(user: UserProfile):Observable<any> {
+    return this.http.put<any>(this.apiUrl+"user/forgotPassword",user);
+  }
+
+  updatePassword(user: UserProfile):Observable<any> {
+    return this.http.put<any>(this.apiUrl+"user/updatePassword",user);
+  }
+
   getAllMutualFunds(FilterMutualFundOptions:{capsCategory:string,riskCategory:string,paymentAmount:number}):Observable<MutualFunds[][]>{
     return this.http.post<MutualFunds[][]>(this.apiUrl+"stocks/mutualfunds",FilterMutualFundOptions);
   }
