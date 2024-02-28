@@ -19,11 +19,16 @@ export class LoginComponent {
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   loginWithCredentials(){
+
+    this.user.password = btoa(this.user.password); // Using Base64 encoding
+    
     this.investmentappService.investorLogin(this.user).subscribe(
       (response: HttpResponse<any>)=>{
         this.user = response as unknown as UserProfile; 
         window.alert("Login Successful!!!");
         UserinfoComponent.setUser(this.user);
+        // Storing user object in local storage
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.router.navigate(['/myportfolio']);
         
       },

@@ -36,7 +36,7 @@ export class UserinfoComponent implements OnInit{
  
 
   ngOnInit(): void {
-    this.userdata = UserinfoComponent.user;
+    this.userdata = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }

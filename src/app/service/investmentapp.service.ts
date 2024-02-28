@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MutualFunds } from '../model/mutualfunds';
@@ -16,6 +16,7 @@ import { GoldInvestment } from '../model/GoldInvestment';
   providedIn: 'root'
 })
 export class InvestmentappService {
+
 
   private apiUrl='http://localhost:8090/';
 
@@ -70,6 +71,24 @@ export class InvestmentappService {
   }
   saveSgb(sgb: SovereignGoldBonds):Observable<boolean> {
     return this.http.post<boolean>(this.apiUrl+"bonds/submit/sgb",sgb);
+  }
+  getValues():Observable<FloatingRateBonds> {
+    return this.http.get<FloatingRateBonds>("http://localhost:8085/apiprovider/floatingratebonds");
+  }
+ 
+  getGoldPrice():Observable<any> {
+   
+    const headers = new HttpHeaders({
+      'x-access-token': 'goldapi-rpenrlso74f4h-io',
+      'Content-Type': 'application/json'
+    });
+
+    const requestOptions = {
+      headers: headers
+    };
+
+    return this.http.get("https://www.goldapi.io/api/XAU/INR/20240215", requestOptions);
+      
   }
  
 }

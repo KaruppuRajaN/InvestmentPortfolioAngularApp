@@ -18,6 +18,8 @@ export class SignupComponent {
 
   SignUpNow():any {
     this.userSignUp.walletBalance=3000;
+
+    this.userSignUp.password = btoa(this.userSignUp.password); 
     this.investmentappService.investorSignUp(this.userSignUp).subscribe(
       (response: HttpResponse<any>)=>{
         window.alert(response.body);

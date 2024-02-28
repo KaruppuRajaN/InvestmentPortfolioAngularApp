@@ -5,6 +5,8 @@ import { InvestmentappService } from '../service/investmentapp.service';
 import { subscribe } from 'diagnostics_channel';
 import { UserProfile } from '../model/UserProfile';
 import { Router, RouterConfigOptions } from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-floating-rate-bond',
@@ -22,18 +24,22 @@ export class FloatingRateBondComponent implements OnInit{
   constructor(private service:InvestmentappService, private router : Router){ 
     this.frb.time = 0.5;
     this.frb.n = 7;
-    this.frb.initialRate = 6.8;
+    /*this.frb.initialRate = 6.8;
     this.frb.finalRate = 7.7;
-    this.frb.spread =3.5;
+    this.frb.spread =3.5;*/
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+       this.service.getValues().subscribe(
+        (response) => { 
+            console.log(response);
+            this.frb = response;
+            this.frb.time = 0.5;
+            this.frb.n = 7;
+         }
+      );
 
-   /* this.service.getValues(initialRate,finalRate,spread).subscribe(data =>{
-      this.initialRate = */
-
-
-    
+  } 
     
 
   calculate(){
