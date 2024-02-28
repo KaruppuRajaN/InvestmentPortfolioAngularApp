@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoldInvestment } from '../model/GoldInvestment';
 import { InvestmentappService } from '../service/investmentapp.service';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserInfo } from 'os';
+import { UserProfile } from '../model/UserProfile';
+import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
   selector: 'app-gold',
   templateUrl: './gold.component.html',
   styleUrl: './gold.component.css'
 })
-export class GoldComponent {
+export class GoldComponent implements OnInit{
   gold: GoldInvestment = new GoldInvestment();
 
   constructor(private service:InvestmentappService, private router: Router) {}
+
+  ngOnInit() {
+    this.gold.goldHolder = UserinfoComponent.user;
+  }
  
   calculate() {
     // Calculate maturity amount
@@ -32,13 +37,19 @@ saveGold(gold:GoldInvestment):any{
     (response) => { 
       if(response){
         window.alert("Gold Details succesfully submitted");
-        this.router.navigate(['/home']);
+        this.router.navigate(['/myportfolio']);
       }
      }
   );
 }
 
 SaveGold() {
-  this.saveGold(this.gold);
+  window.alert("WalletBalance:"+this.gold.goldHolder.walletBalance + 
+  "   Investment:"+ (this.gold.principle*12*this.gold.years));
+    if(this.gold.goldHolder.walletBalance<=this.gold.amount){
+      window.alert("Please add money to your wallet to invest on Digital Gold");
+    }else{
+      this.saveGold(this.gold);
+}
 }
 }

@@ -1,11 +1,19 @@
 <div *ngIf="!emptyResult" >
-
-<div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of mutualfunds; let i =index;">
+  <div *ngIf="pageMutualFunds.length>0" style="position: relative; right: 0; margin-top: 20px; margin-left: 70%;">
+    <button [ngStyle]="{'background-color':currentPage===1?'#CCCCFF':'#4169E1'}"  style="width: 100px; background-color: #4169E1;" [disabled]="currentPage===1" (click)="currentPage=currentPage-1"><b>Previous</b></button>
+    <span><b>Page {{currentPage}} of {{totalPages}}</b></span>
+    <button [ngStyle]="{'background-color':currentPage*5>=mutualfunds.length?'#CCCCFF':'#4169E1'}"  style="width: 100px; background-color: #4169E1;" [disabled]="currentPage*5>=mutualfunds.length" (click)="currentPage=currentPage+1"><b>Next</b></button>
+    
+  </div>
+  </div>
+  <div *ngIf="!emptyResult" >
+  <div style="margin-top: 10px;">
+<div style="width: 90%; margin-bottom: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of getRecordsPage(); let i =index;">
 <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
     <mat-card-header >
               <mat-card-title>
-                <span><b>Mutual Fund Price:{{boughtAmount[i]|round:2}} </b></span>
-                <span style="color: #32CD32; position:absolute; right: 10px;"><b>Current Return:{{currentReturn[i]|round:2}}</b></span></mat-card-title>
+                <span><b>Mutual Fund Price:{{pageBoughtAmount[i]|round:2}} </b></span>
+                <span style="color: #32CD32; position:absolute; right: 10px;"><b>Current Return:{{pageCurrentReturnValue[i]|round:2}}</b></span></mat-card-title>
       
     </mat-card-header>
     <mat-card-content>
@@ -39,6 +47,13 @@
       <button (click)="withdrawMF(mutualfund)" mat-button style="background-color: red;width: 150px;position:absolute; right: 50px;bottom:0; margin-bottom: 10px;">Sell(Withdraw)</button>
     </div>
   </mat-card>
+  </div>
+  </div>
+  <div *ngIf="pageMutualFunds.length>0" style="margin-top: 30px;margin-bottom: 50px; position: absolute; right: 0; margin-right: 70px;">
+    <button [ngStyle]="{'background-color':currentPage===1?'#CCCCFF':'#4169E1'}" style="width: 100px; background-color: #4169E1;" [disabled]="currentPage===1" (click)="currentPage=currentPage-1"><b>Previous</b></button>
+    <span><b>Page {{currentPage}} of {{totalPages}}</b></span>
+    <button  [ngStyle]="{'background-color':currentPage*5>=mutualfunds.length?'#CCCCFF':'#4169E1'}" style="width: 100px; background-color: #4169E1;" [disabled]="currentPage*5>=mutualfunds.length" (click)="currentPage=currentPage+1"><b>Next</b></button>
+    
   </div>
 </div>
 <div *ngIf="emptyResult" style="color: #32CD32;"><br><br><h1 style="text-align: center;">Your Bucket is Empty. Kindly Buy the Mutual Funds and Happy with Returns!!!</h1></div>

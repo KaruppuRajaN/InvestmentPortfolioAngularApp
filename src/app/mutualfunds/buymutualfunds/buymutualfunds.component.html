@@ -12,13 +12,19 @@
       <option value="Mid">Mid</option>
       <option value="Small">Small</option>
     </select>
-    <input type="number" placeholder="Enter Amount you can Spent" [(ngModel)]="paymentAmount" (input)="onPaymentChange()">
-    <button  type="submit" style="background-color: aqua;" (click)="onSubmit()">Check Mutual Funds</button>
- 
-    <div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of mutualfunds; let i =index;">
+    <input type="number" placeholder="Enter Amount you want to Spent" [(ngModel)]="paymentAmount" (input)="onPaymentChange()">
+    <button  type="submit" style="background-color: hwb(184 33% 8%)" (click)="onSubmit()">Check Mutual Funds</button>
+    <div *ngIf="pageMutualFunds.length>0" style="margin-top: 30px;margin-bottom: 50px; position: absolute; right: 0; margin-right: 70px;">
+      <button [ngStyle]="{'background-color':currentPage===1?'#CCCCFF':'#4169E1'}"  style="width: 100px; background-color: #4169E1;" [disabled]="currentPage===1" (click)="currentPage=currentPage-1"><b>Previous</b></button>
+      <span><b>Page {{currentPage}} of {{totalPages}}</b></span>
+      <button [ngStyle]="{'background-color':currentPage*5>=mutualfunds.length?'#CCCCFF':'#4169E1'}"  style="width: 100px; background-color: #4169E1;" [disabled]="currentPage*5>=mutualfunds.length" (click)="currentPage=currentPage+1"><b>Next</b></button>
+      
+    </div>
+    <div style="margin-top: 80px;">
+    <div style="width: 90%; margin-top: 30px; margin-left: 5%; margin-right: 5%;" *ngFor="let mutualfund of getRecordsPage(); let i =index;">
   <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
     <mat-card-header >
-              <mat-card-title><span><b>Mutual Fund Price: {{mutualStockValue[i]|round:2}}</b></span><span style="color: #32CD32; position:absolute; right: 10px;"><b>Expected Return: {{expectedReturnValue[i]|round:2}}</b></span></mat-card-title>
+              <mat-card-title><span><b>Mutual Fund Price: {{pageMutualStockValue[i]|round:2}}</b></span><span style="color: #32CD32; position:absolute; right: 10px;"><b>Expected Return: {{pageExpectedReturnValue[i]|round:2}}</b></span></mat-card-title>
       
     </mat-card-header>
     <mat-card-content>
@@ -54,6 +60,13 @@
       <button (click)="purchaseMF(mutualfund)" mat-button style="background-color: #32CD32;width: 100px;position:absolute; right: 50px;bottom:0; margin-bottom: 10px;">Buy</button>
     </div>
   </mat-card>
+</div >
+</div>
+<div *ngIf="pageMutualFunds.length>0" style="margin-top: 30px;margin-bottom: 50px; position: absolute; right: 0; margin-right: 70px;">
+  <button [ngStyle]="{'background-color':currentPage===1?'#CCCCFF':'#4169E1'}" style="width: 100px; background-color: #4169E1;" [disabled]="currentPage===1" (click)="currentPage=currentPage-1"><b>Previous</b></button>
+  <span><b>Page {{currentPage}} of {{totalPages}}</b></span>
+  <button  [ngStyle]="{'background-color':currentPage*5>=mutualfunds.length?'#CCCCFF':'#4169E1'}" style="width: 100px; background-color: #4169E1;" [disabled]="currentPage*5>=mutualfunds.length" (click)="currentPage=currentPage+1"><b>Next</b></button>
+  
 </div>
   
   <br><br>
