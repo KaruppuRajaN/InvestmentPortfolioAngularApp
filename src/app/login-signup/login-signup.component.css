@@ -1,0 +1,45 @@
+.banner1 .login-signup {
+    background-color: #f0f4f8; /* Light background color */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .banner1 .login-signup button {
+    background-color: #4CAF50; /* Green */
+    border-radius: 12px;
+    color: #fff; /* White text */
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    width: calc(50% - 5px); /* Adjusted width for two buttons with a small gap between */
+    box-sizing: border-box;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .banner1 .login-signup button:not(:disabled):hover,
+  .banner1 .login-signup button:not(:disabled):focus {
+    outline: 0;
+    background: #55a3ff; /* Light blue background on hover */
+    box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+  }
+  
+  .banner1 .login-signup button:disabled {
+    filter: saturate(0.2) opacity(0.5);
+    -webkit-filter: saturate(0.2) opacity(0.5);
+    cursor: not-allowed;
+  }
+  
+  /* Hover effect for sibling button */
+  .banner1 .login-signup button:hover + button,
+  .banner1 .login-signup button:focus + button,
+  .banner1 .login-signup button + button:hover,
+  .banner1 .login-signup button + button:focus {
+    background-color: #93c3ff; /* Light blue background for the other button */
+  }
+  
