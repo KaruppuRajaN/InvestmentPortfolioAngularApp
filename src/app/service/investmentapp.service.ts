@@ -8,6 +8,8 @@ import { FixedDeposit } from '../model/FixedDeposit';
 import { RecurringDeposit } from '../model/RecurringDeposit';
 import { Portal } from '@angular/cdk/portal';
 import { Portfolio } from '../model/Portfolio';
+import { FloatingRateBonds } from '../model/FloatingRateBonds';
+import { SovereignGoldBonds } from '../model/SovereignGoldBonds';
 import { GoldInvestment } from '../model/GoldInvestment';
 
 @Injectable({
@@ -45,6 +47,7 @@ export class InvestmentappService {
   purchaseMutualFunds(purchasedMF:PurchasedMutualFunds[]):Observable<string>{
     return this.http.post<string>(this.apiUrl+"stocks/purchasemutualfunds",purchasedMF);
   }
+
   withdrawMutualFunds(purchasedMF:PurchasedMutualFunds[]):Observable<string>{
     return this.http.post<string>(this.apiUrl+"stocks/withdrawmutualfunds",purchasedMF);
   }
@@ -61,4 +64,12 @@ export class InvestmentappService {
     const url = `${this.apiUrl}portfolio/`+userId;
     return this.http.get<Portfolio>(url);
   }
+  
+  saveFrb(frb: FloatingRateBonds):Observable<boolean> {
+    return this.http.post<boolean>(this.apiUrl+"bonds/submit/frd",frb);
+  }
+  saveSgb(sgb: SovereignGoldBonds):Observable<boolean> {
+    return this.http.post<boolean>(this.apiUrl+"bonds/submit/sgb",sgb);
+  }
+ 
 }
