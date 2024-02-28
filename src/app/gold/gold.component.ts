@@ -51,8 +51,8 @@ saveGold(gold:GoldInvestment):any{
 
 SaveGold() {
   window.alert("WalletBalance:"+this.gold.goldHolder.walletBalance + 
-  "   Investment:"+ (this.gold.principle*12*this.gold.years));
-    if(this.gold.goldHolder.walletBalance<=this.gold.amount){
+  "   Investment:"+ (this.gold.principle));
+    if(this.gold.goldHolder.walletBalance<=this.gold.principle){
       window.alert("Please add money to your wallet to invest on Digital Gold");
     }else{
       this.saveGold(this.gold);
