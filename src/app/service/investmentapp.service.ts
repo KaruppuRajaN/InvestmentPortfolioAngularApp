@@ -72,6 +72,10 @@ export class InvestmentappService {
   saveSgb(sgb: SovereignGoldBonds):Observable<boolean> {
     return this.http.post<boolean>(this.apiUrl+"bonds/submit/sgb",sgb);
   }
+  getValues():Observable<FloatingRateBonds> {
+    return this.http.get<FloatingRateBonds>("http://localhost:8085/apiprovider/floatingratebonds");
+  }
+ 
   getGoldPrice():Observable<any> {
    
     const headers = new HttpHeaders({
