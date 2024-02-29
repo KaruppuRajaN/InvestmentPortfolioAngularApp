@@ -17,7 +17,7 @@ export class SignupComponent {
   constructor(private investmentappService:InvestmentappService, private router: Router){}
 
   SignUpNow():any {
-    this.userSignUp.walletBalance=3000;
+    //this.userSignUp.walletBalance=3000;
 
     this.userSignUp.password = btoa(this.userSignUp.password); 
     this.investmentappService.investorSignUp(this.userSignUp).subscribe(

@@ -1,12 +1,131 @@
-<div *ngIf="!emptyResult" >
+<div *ngIf="!emptyResult" style="display: flex; flex-wrap: wrap;">
+    <mat-card style="flex: 1 1 300px; border: 2px solid #E6E6FA; background-color: #D8BFD8;">
+      <mat-card-header>
+        <mat-card-title>
+          <main>
+            <table style="border: 1px solid #ccc; width: 100%; border-collapse: collapse;">
+              <tbody>
+                <tr>
+                  <td style="padding: 8px;">
+                    <aside style="margin-bottom: 16px;">
+                      <h2>Investments</h2>
+                    </aside>
+                  </td>
+                </tr>
+                <article>
+                <tr>
+                  <td style="padding: 8px;">
+                    <h2 style="font-size: 16px;">User Details</h2>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px;">
+                    <span style="font-size: 14px;">UserId: {{userdetails.userId}}</span><br>
+                    <span style="font-size: 14px;">Email Id: {{userdetails.emailId}}</span><br>
+                    <span style="font-size: 14px;">Aadhar Number: {{userdetails.aadharNumber}}</span><br>
+                    <span style="font-size: 14px;">PAN Number: {{userdetails.panNumber}}</span><br>
+                    <span style="font-size: 14px;">Wallet Balance: {{userdetails.walletBalance}}</span><br>
+                  </td>
+                </tr>
+            </article>
+            <article *ngFor="let fix of fixed">
+                <tr>
+                    <td style="padding: 8px;">
+                      <h2 style="font-size: 16px;">Fixed Deposits</h2>
+                    </td>
+                  </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        <span style="font-size: 14px;">Start Date: {{fix.StartDate}}</span><br>
+                        <span style="font-size: 14px;">End Date: {{fix.EndDate}}</span><br>
+                        <span style="font-size: 14px;">Payout Amount: {{fix.interestPayoutAmount}}</span><br>
+                        <span style="font-size: 14px;">Payout Type: {{fix.interestPayoutType}}</span><br>
+                        <span style="font-size: 14px;">Amount Invested: {{fix.depositAmount}}</span><br>
+                        <span style="font-size: 14px;">Returns: {{fix.maturityAmount}}</span><br>
+                    </td>
+                </tr>
+            </article>
+            <article *ngFor="let reccuringdep of recurring">
 
-    <mat-card style="border: 2px solid #E6E6FA; background-color: #D8BFD8;">
-        <mat-card-header >
-            <mat-card-title>
-            <span><b>{{portfolio | json}}</b></span>
-            <span style="color: #32CD32; position:absolute; right: 10px;"><b></b></span></mat-card-title>
-        </mat-card-header>
+                <tr>
+                    <td style="padding: 8px;">
+                      <h2 style="font-size: 16px;">Recurring Deposits</h2>
+                    </td>
+                  </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        <span style="font-size: 14px;">Monthly Investment: {{reccuringdep.regularMonthlyDepositAmount}}</span><br>
+                        <span style="font-size: 14px;">Tenure Years: {{reccuringdep.tenureYears}}</span><br>
+                        <span style="font-size: 14px;">Amount Invested: {{reccuringdep.totalAmountInvested}}</span><br>
+                        <span style="font-size: 14px;">Returns: {{reccuringdep.maturityAmount}}</span><br>
+                        <span style="font-size: 14px;">End Date: {{reccuringdep.endDate}}</span><br>
+                    </td>
+                </tr>
+            </article>
+            <article *ngFor="let gold of goldinv">
+
+                <tr>
+                    <td style="padding: 8px;">
+                      <h2 style="font-size: 16px;">Gold Investments</h2>
+                    </td>
+                  </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        <span style="font-size: 14px;">Gold Id: {{gold.gid}}</span><br>
+                        <span style="font-size: 14px;">Tenure: {{gold.years}}</span><br>
+                        <span style="font-size: 14px;">Profit: {{gold.profit}}</span><br>
+                        <span style="font-size: 14px;">Gold Purchased: {{gold.goldpurchased}}</span><br>
+                        <span style="font-size: 14px;">Amount Invested: {{gold.principle}}</span><br>
+                        <span style="font-size: 14px;">Returns: {{gold.amount}}</span><br>
+                    </td>
+                </tr>
+            </article>
+            <article *ngFor="let rate of ratebond">
+
+                <tr>
+                    <td style="padding: 8px;">
+                      <h2 style="font-size: 16px;">Floating Rate Bonds</h2>
+                    </td>
+                  </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        <span style="font-size: 14px;">Initial Rate: {{rate.initialRate}}</span><br>
+                        <span style="font-size: 14px;">Final Rate: {{rate.finalRate}}</span><br>
+                        <span style="font-size: 14px;">Spread: {{rate.spread}}</span><br>
+                        <span style="font-size: 14px;">Amount Invested: {{rate.interestAmount}}</span><br>
+                        <span style="font-size: 14px;">Returns: {{rate.finalReturns}}</span><br>
+                    </td>
+                </tr>
+            </article>
+            <article *ngFor="let goldb of goldbond">
+
+                <tr>
+                    <td style="padding: 8px;">
+                      <h2 style="font-size: 16px;">Soverign Gold Bonds</h2>
+                    </td>
+                  </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        <span style="font-size: 14px;"> Gold price: {{goldb.gprice}}</span><br>
+                        <span style="font-size: 14px;"> Face Value: {{goldb.facevalue}}</span><br>
+                        <span style="font-size: 14px;"> Total Interest: {{goldb.totalInterest}}</span><br>
+                        <span style="font-size: 14px;"> Amount Invested: {{goldb.iamount}}</span><br>
+                        <span style="font-size: 14px;"> Returns: {{goldb.maturityValue}}</span><br>
+                    </td>
+                </tr>
+            </article>
+
+             
+
+              </tbody>
+            </table>
+          </main>
+        </mat-card-title>
+      </mat-card-header>
     </mat-card>
-
-    </div>
-    <div *ngIf="emptyResult" style="color: #32CD32;"><br><br><h1 style="text-align: center;">Your Bucket is Empty. Kindly Invest for Happy with Returns!!!</h1></div>
+   
+  </div>
+  
+  <div *ngIf="emptyResult" style="color: #32CD32;"><br><br>
+    <h1 style="text-align: center; font-size: 24px;">
+        Your Bucket is Empty. Kindly Invest for Happy with Returns!!!</h1></div>
