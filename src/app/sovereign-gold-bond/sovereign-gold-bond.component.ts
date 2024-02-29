@@ -28,6 +28,7 @@ ngOnInit(){
         this.sgb.gprice = response.price_gram_24k;
      }
   );
+  this.sgb.sgbHolder = JSON.parse(localStorage.getItem('currentUser'));
 }
 
 calculate() {

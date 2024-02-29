@@ -30,12 +30,15 @@ export class FloatingRateBondComponent implements OnInit{
   }
 
   ngOnInit(){
+    this.frb.frbHolder = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.frb.frbHolder);
        this.service.getValues().subscribe(
         (response) => { 
             console.log(response);
             this.frb = response;
             this.frb.time = 0.5;
             this.frb.n = 7;
+            this.frb.frbHolder = JSON.parse(localStorage.getItem('currentUser'));
          }
       );
 

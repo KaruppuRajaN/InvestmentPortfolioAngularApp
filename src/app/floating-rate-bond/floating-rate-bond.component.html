@@ -1,36 +1,37 @@
+<div class="container">
 <div>
     <h2>Floating Rate Bonds</h2>
     <form (ngSubmit)="calculate()">
-      <div>
+      <div class="form-group">
         <label for="principal">principal</label>
-        <input type="number" [(ngModel)]="frb.principal" name="Principal" >
+        <input type="number" [(ngModel)]="frb.principal" name="Principal"  class="form-control" >
       </div>
      
-      <div>
+      <div class="form-group">
         <label for="initialRate">Initial Rate:</label>
-        <input type="number" [(ngModel)]="frb.initialRate" name="initial Rate" readonly >
+        <input type="number" [(ngModel)]="frb.initialRate" name="initial Rate"  class="form-control" readonly >
       </div>
      
-      <div>
+      <div class="form-group">
         <label for="finalRate"> Final rate:</label>
-        <input type="number" [(ngModel)]="frb.finalRate" name="final rate" readonly >
+        <input type="number" [(ngModel)]="frb.finalRate" name="final rate"  class="form-control" readonly >
       </div>
-      <div>
+      <div  class="form-group">
         <label for="spread">Spread</label>
-        <input type="number" [(ngModel)]="frb.spread" name="Spread" readonly>
+        <input type="number" [(ngModel)]="frb.spread" name="Spread"  class="form-control" readonly>
       </div>
      
-     <div>
+     <div  class="form-group">
         <label for="n">Years</label>
-        <input type="number" [(ngModel)]="frb.n" name="Year" readonly >
+        <input type="number" [(ngModel)]="frb.n" name="Year"  class="form-control" readonly >
     </div>
-    <div>
+    <div class="form-group">
       <label for="time">Time</label>
-      <input type="number" [(ngModel)]="frb.time" name="time" readonly >
+      <input type="number" [(ngModel)]="frb.time" name="time"  class="form-control" readonly >
    </div>
  
    
-      <button type="submit">Calculate</button>
+      <button type="submit"  class="btn btn-primary" >Calculate</button>
     </form>
   
     <div *ngIf="frb.finalReturns">
@@ -39,9 +40,43 @@
       <p>Total Interest : {{ frb.interestAmount | currency: 'INR' }}</p>
       <p>Maturity Value : {{ frb.finalReturns  | currency: 'INR' }}</p>
 
-      <button type="submit" (click)="submitFRB()" >Invest Now</button>
+      <button type="submit" (click)="submitFRB()" class="btn btn-primary">Invest Now</button>
     </div>
        
 
+
+<!--div class="container">
+  <h2>Floating Rate Bond Calculator</h2>
+  <form (ngSubmit)="calculate()">
+    <div class="form-group">
+      <label for="principle">Principle:</label>
+      <input type="number" [(ngModel)]="frb.principal" name="principal" class="form-control" readonly>
+    </div>
+  <div class="form-group">
+  <label for="initialRate">Initial Rate:</label>
+  <input type="number" [(ngModel)]="frb.initialRate" name="initialRate" class="form-control" readonly>
+  </div>
+  <div class="form-group">
+  <label for="finalRate">Final Rate:</label>
+  <input type="number" [(ngModel)]="frb.finalRate" name="finalRate" class="form-control" readonly>
+  </div>
+  <div class="form-group">
+  <label for="spread">Spread:</label>
+  <input type="number" [(ngModel)]="frb.spread" name="spread" class="form-control" readonly>
+  </div>
+ 
+  <div class="form-group">
+  <label for="n">Years:</label>
+  <input type="number" [(ngModel)]="frb.n" name="years" class="form-control" readonly>
+  </div>
+  <button type="submit" class="btn btn-primary">Calculate</button>
+  </form>
+   
+    <div *ngIf="frb.finalReturns" class="results">
+  <h3>Results</h3>
+  <p>Total Interest: {{ frb.interestAmount | currency: 'INR' }}</p>
+  <p>Maturity Value: {{ frb.finalReturns | currency: 'INR' }}</p>
+  </div>
+  </div>-->
   
   
