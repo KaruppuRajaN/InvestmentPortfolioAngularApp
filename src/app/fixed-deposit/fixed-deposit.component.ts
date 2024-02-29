@@ -2,9 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { FixedDeposit } from '../model/FixedDeposit';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { Router } from '@angular/router';
-import { UserInfo } from 'os';
-import { UserProfile } from '../model/UserProfile';
-import { UserinfoComponent } from '../userinfo/userinfo.component';
+
 
 @Component({
   selector: 'app-fixed-deposit',
@@ -67,7 +65,7 @@ export class FixedDepositCalculatorComponent implements OnInit {
   }
 
   submitFD() {
-    window.alert("Confirm Submission" + this.fixDep.fdHolder.walletBalance + " " + this.fixDep.depositAmount);
+    window.alert("Confirm Submission? your wallet balance -> " + this.fixDep.fdHolder.walletBalance + ", current deposit amount-> " + this.fixDep.depositAmount);
     if(this.fixDep.fdHolder.walletBalance<=this.fixDep.depositAmount){
       window.alert("Please add money to your wallet to invest this FD");
     }else{

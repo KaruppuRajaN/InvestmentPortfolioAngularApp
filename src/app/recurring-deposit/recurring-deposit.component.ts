@@ -68,7 +68,8 @@ export class RecurringDepositComponent implements OnInit {
   }
 
   submitRD() {
-    window.alert("Confirm Submission" + this.rd.rdHolder.walletBalance + " " + this.rd.regularMonthlyDepositAmount);
+    window.alert("Confirm Submission? your wallet balance -> " + this.rd.rdHolder.walletBalance 
+    + ", current deposit amount-> " + this.rd.regularMonthlyDepositAmount);
     if(this.rd.rdHolder.walletBalance<=this.rd.regularMonthlyDepositAmount){
       window.alert("Please add money to your wallet to invest this FD");
     }else{

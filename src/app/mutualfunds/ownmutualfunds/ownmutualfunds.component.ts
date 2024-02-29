@@ -32,7 +32,7 @@ export class OwnmutualfundsComponent {
     this.mutualfunds=[];
   this.userProfile=new UserProfile();
 
-  this.service.investorLogin(UserinfoComponent.user).subscribe(
+  this.service.investorDetails(UserinfoComponent.user).subscribe(
     (response: HttpResponse<any>)=>{
       UserinfoComponent.user = response as unknown as UserProfile; 
       this.walletBalance=UserinfoComponent.user.walletBalance;
@@ -94,7 +94,7 @@ export class OwnmutualfundsComponent {
         this.ngOnInit();
       }
     );
-    this.service.investorLogin(UserinfoComponent.user).subscribe(
+    this.service.investorDetails(UserinfoComponent.user).subscribe(
       (response: HttpResponse<any>)=>{
         UserinfoComponent.user = response as unknown as UserProfile; 
         this.walletBalance=UserinfoComponent.user.walletBalance;
