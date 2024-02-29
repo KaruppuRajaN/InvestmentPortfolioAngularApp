@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GoldInvestment } from '../model/GoldInvestment';
 import { InvestmentappService } from '../service/investmentapp.service';
 import { Router } from '@angular/router';
-import { UserInfo } from 'os';
-import { UserProfile } from '../model/UserProfile';
+// import { UserInfo } from 'os';
+// import { UserProfile } from '../model/UserProfile';
 import { UserinfoComponent } from '../userinfo/userinfo.component';
 
 @Component({
@@ -17,7 +17,8 @@ export class GoldComponent implements OnInit{
   constructor(private service:InvestmentappService, private router: Router) {}
 
   ngOnInit() {
-    this.gold.goldHolder = UserinfoComponent.user;
+    // this.gold.goldHolder = UserinfoComponent.user;
+    this.gold.goldHolder = JSON.parse(localStorage.getItem('currentUser'));
     this.service.getGoldPrice().subscribe(
       (response) => { 
           console.log(response);
