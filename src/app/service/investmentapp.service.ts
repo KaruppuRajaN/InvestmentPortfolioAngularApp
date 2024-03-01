@@ -85,7 +85,7 @@ export class InvestmentappService {
   getGoldPrice():Observable<any> {
    
     const headers = new HttpHeaders({
-      'x-access-token': 'goldapi-rpenrlso74f4h-io',
+      'x-access-token': 'goldapi-19kw691slt708kk5-io',
       'Content-Type': 'application/json'
     });
 
@@ -93,7 +93,7 @@ export class InvestmentappService {
       headers: headers
     };
 
-    return this.http.get("https://www.goldapi.io/api/XAU/INR/20240215", requestOptions);
+    return this.http.get("https://www.goldapi.io/api/XAU/INR/20240228", requestOptions);
       
   }
  

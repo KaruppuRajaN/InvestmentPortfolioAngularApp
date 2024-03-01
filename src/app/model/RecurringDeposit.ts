@@ -4,7 +4,7 @@ import { UserProfile } from "./UserProfile";
 export class RecurringDeposit {
     regularMonthlyDepositAmount!: number;
     tenureYears!: number;
-    rate!: number;
+    rate: number = 7.5;
     startDate!: Date;
     totalAmountInvested!: number;
     interestAmount: number | undefined;

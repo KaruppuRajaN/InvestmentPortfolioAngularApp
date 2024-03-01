@@ -70,9 +70,6 @@ export class FixedDepositCalculatorComponent implements OnInit {
       window.alert("Please add money to your wallet to invest this FD");
     }else{
       this.saveProduct(this.fixDep);
-    }
-    
+    }  
   }
-
-
 }

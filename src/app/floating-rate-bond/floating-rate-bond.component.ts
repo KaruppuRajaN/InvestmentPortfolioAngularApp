@@ -48,6 +48,7 @@ export class FloatingRateBondComponent implements OnInit{
   calculate(){
     this.frb.interestOne = (this.frb.principal*Math.pow(1+(this.frb.initialRate+this.frb.spread)/this.frb.n,this.frb.n*this.frb.time));
     this.frb.finalReturns = (this.frb.interestOne*Math.pow(1+(this.frb.finalRate+this.frb.spread)/this.frb.n,this.frb.n*this.frb.time));
+    console.log(this.frb.finalReturns);
     this.frb.interestAmount = (this.frb.finalReturns)- (this.frb.principal);
   }
 
