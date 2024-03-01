@@ -8,11 +8,14 @@ import { UserinfoComponent } from '../userinfo/userinfo.component';
 })
 export class NavbarComponent {
   navLinks = [
+
     {path: '/myportfolio'},
     {path: '/myportfolio'},
     {path: '/myportfolio'},
     {path: '/myportfolio'},
     {path: '/myportfolio'},
+    {path: '  ',},
+    {path: '  ',},
     { label: 'Home', path: '/home' },
     { label: 'Deposits', dropdownItems: [
         { label: 'Fixed Deposit', path: '/deposits/fd' },
@@ -28,11 +31,19 @@ export class NavbarComponent {
     { label: 'Mutual Funds', path: '/mfunds' },
     { label: 'My Portfolio', path: '/myportfolio' },
     { path: '/mutualprocess', },
+
     {path: '/myportfolio'},
     {path: '/myportfolio'},
     {path: '/myportfolio'},
     {path: '/myportfolio'},
-    
+
+    {path: '  ',},
+    {path: '  ',},
+    {path: '  ',},
+    {path: '  ',},
+    {path: '  ',},
+    {path: '  ',},
+    {path: '  ',},
     { label: 'Login/SignUp', path: '/login-signup' }
   ];
  
